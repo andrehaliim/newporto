@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowLeft, ExternalLink, Layers, Link as LinkIcon } from "lucide-react";
 import { projects } from "@/data/portfolio";
 import { GithubIcon, DartIcon } from "@/components/icons/BrandIcons";
+import ThemeToggle from "@/components/ThemeToggle";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -50,6 +51,9 @@ export default function ProjectDetailPage({ params }: PageProps) {
           <span className="ml-3 font-mono text-xs text-text-muted">
             //project_detail — {project.name}.md
           </span>
+          <div className="ml-auto">
+            <ThemeToggle />
+          </div>
         </div>
 
         {/* tab */}
@@ -90,30 +94,42 @@ export default function ProjectDetailPage({ params }: PageProps) {
               App Screenshots
             </h3>
             
-            <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-border bg-surface">
-              <Image
-                src={screenshots[activeImageIndex]}
-                alt={`Screenshot ${project.title} - ${activeImageIndex + 1}`}
-                fill
-                priority
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-              />
-              <div className="absolute bottom-3 right-3 rounded bg-bg/80 px-2 py-1 font-mono text-xs text-text backdrop-blur border border-border">
+            <div className="flex flex-col items-center justify-center p-6 rounded-2xl border border-border bg-surface-2/30">
+              {/* Phone Mockup Frame */}
+              <div className="relative mx-auto w-full max-w-[280px] aspect-[9/19.5] rounded-[38px] border-[10px] border-[#0d1527] shadow-2xl overflow-hidden bg-bg ring-1 ring-border">
+                              
+                {/* Content Area */}
+                <div className="relative h-full w-full overflow-hidden bg-surface">
+                  <Image
+                    src={screenshots[activeImageIndex]}
+                    alt={`Screenshot ${project.title} - ${activeImageIndex + 1}`}
+                    fill
+                    priority
+                    sizes="(min-width: 1024px) 25vw, 75vw"
+                    className="object-cover"
+                  />
+                  
+                  {/* Home Indicator */}
+                  <div className="absolute bottom-1 left-1/2 z-20 h-1 w-24 -translate-x-1/2 rounded-full bg-white/20" />
+                </div>
+              </div>
+
+              {/* Counter Indicator */}
+              <div className="mt-4 rounded-full bg-surface-2 px-3 py-1 font-mono text-xs text-text border border-border">
                 {activeImageIndex + 1} / {screenshots.length}
               </div>
             </div>
 
             {/* Thumbnails */}
             {screenshots.length > 1 && (
-              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin">
+              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin justify-center">
                 {screenshots.map((src, idx) => (
                   <button
                     key={idx}
                     onClick={() => setActiveImageIndex(idx)}
-                    className={`relative aspect-video w-24 flex-shrink-0 overflow-hidden rounded border transition-all ${
+                    className={`relative aspect-[9/16] w-14 flex-shrink-0 overflow-hidden rounded border transition-all ${
                       activeImageIndex === idx
-                        ? "border-accent-2 scale-[0.98] ring-1 ring-accent-2"
+                        ? "border-accent-2 scale-[0.95] ring-1 ring-accent-2"
                         : "border-border hover:border-text-muted bg-surface-2"
                     }`}
                   >
@@ -121,7 +137,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
                       src={src}
                       alt={`Thumbnail ${idx + 1}`}
                       fill
-                      sizes="96px"
+                      sizes="56px"
                       className="object-cover"
                     />
                   </button>

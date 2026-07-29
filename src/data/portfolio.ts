@@ -5,9 +5,9 @@
 
 export const profile = {
   name: "Andre Haliim",
-  role: "Flutter Developer",
+  role: "Software Engineer",
   tagline:
-    "Creating mobile applications that are fast, clean, and enjoyable to use — from idea to production.",
+    "Turning ideas into working software, one clean line of code at a time.",
   location: "Bandung, Indonesia",
   email: "andrehaliimkurniawan@gmail.com",
   photo: "/profile.jpeg",
@@ -17,6 +17,11 @@ export const profile = {
     linkedin: "https://linkedin.com/in/andrehaliim",
     twitter: "https://twitter.com/andrehaliim",
   },
+  description: {
+    paragraph1: "I build robust and scalable mobile applications using Flutter. With a strong foundation in object-oriented programming and software architecture, I specialize in creating seamless user experiences with a focus on performance, clean code, and maintainability.",
+    paragraph2: "My technical approach centers on understanding the core business requirements and translating them into clean, efficient code. I prioritize writing tests, maintaining modular code structures, and implementing best practices to ensure long-term project health. I am passionate about continuously improving my skills and staying updated with the latest trends in mobile development.",
+    paragraph3: "I am seeking opportunities where I can leverage my technical expertise to solve complex problems and contribute to innovative products. I am a collaborative team player who thrives in fast-paced environments and is committed to delivering high-quality results.",
+  }
 };
 
 export const skills = [
@@ -32,7 +37,7 @@ export const projects = [
       "An offline-first mobile app for recording gold trading transactions across a nationwide sales network.",
     image: "/projects/project-1.png",
     screenshots: [
-      "/projects/project-1.png",
+      "/projects/autofleet-1.jpg",
       "/projects/project-2.png",
       "/projects/project-3.png"
     ],

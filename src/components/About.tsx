@@ -1,5 +1,6 @@
 import { skills } from "@/data/portfolio";
 import SectionLabel from "./SectionLabel";
+import { profile } from "@/data/portfolio";
 
 export default function About() {
   return (
@@ -11,13 +12,13 @@ export default function About() {
       <div className="mt-8 grid gap-10 md:grid-cols-5">
         <div className="md:col-span-3">
           <p className="text-text-muted leading-relaxed">
-            I am a dedicated Software Engineer with over 5 years of experience specializing in mobile app development using Flutter for both Android and iOS. While Flutter is my primary tool, I also have experience coding in Kotlin and Swift for native app development.
+            {profile.description.paragraph1}
           </p>
           <p className="mt-4 text-text-muted leading-relaxed">
-            Beyond mobile development, I have contributed to backend development using PHP Laravel and Node.js (JavaScript), collaborating with teams to build robust applications. My ability to adapt quickly allows me to seamlessly switch between frontend and backend tasks, ensuring high-quality solutions in dynamic environments.
+            {profile.description.paragraph2}
           </p>
           <p className="mt-4 text-text-muted leading-relaxed">
-            I am a flexible professional, comfortable working both independently and within a team, always eager to learn new technologies and enhance my skill set.
+            {profile.description.paragraph3}
           </p>
         </div>
 

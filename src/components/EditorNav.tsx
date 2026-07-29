@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { DartIcon } from "./icons/BrandIcons";
+import ThemeToggle from "./ThemeToggle";
 
 const tabs = [
   { id: "home", label: "home.dart" },
@@ -25,13 +26,16 @@ export default function EditorNav() {
         <span className="ml-3 font-mono text-xs text-text-muted">
           //portfolio — Andre Haliim Kurniawan
         </span>
-        <button
-          onClick={() => setOpen(!open)}
-          className="ml-auto text-text-muted hover:text-text md:hidden"
-          aria-label="Buka menu"
-        >
-          {open ? <X size={18} /> : <Menu size={18} />}
-        </button>
+        <div className="ml-auto flex items-center gap-3">
+          <ThemeToggle />
+          <button
+            onClick={() => setOpen(!open)}
+            className="text-text-muted hover:text-text md:hidden"
+            aria-label="Buka menu"
+          >
+            {open ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
       </div>
 
       {/* tabs */}
