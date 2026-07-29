@@ -42,10 +42,9 @@ export const projects = [
       "/projects/project-3.png"
     ],
     descriptionPoints: [
-      "Mengimplementasikan sinkronisasi data offline-first dengan sinkronisasi otomatis saat mendeteksi koneksi internet.",
-      "Menggunakan Objectbox untuk enkripsi database lokal berkinerja tinggi guna mengamankan data transaksi keuangan sensitif.",
-      "Mendesain arsitektur manajemen state yang clean dan testable menggunakan BLoC pattern.",
-      "Mendukung ekspor laporan transaksi harian dan mingguan dalam format PDF dan Excel secara lokal di perangkat pengguna."
+      "Designed an offline-first architecture to support 100+ sales agents operating across Indonesia, ensuring uninterrupted transaction recording despite inconsistent connectivity in remote areas.",
+      "Resolved a critical data integrity issue in the receivables system that could cause inaccurate balance reporting, by redesigning the calculation logic with an immutable base field.",
+      "Eliminated rounding errors in gold weight calculations caused by a floating-point precision limitation, preventing financial discrepancies in high-value transactions."
     ],
     componentsUsed: [
       {
@@ -82,9 +81,9 @@ export const projects = [
       "/projects/project-4.png"
     ],
     descriptionPoints: [
-      "Mengembangkan antarmuka pencarian armada kendaraan yang real-time dengan filter kustom dinamis.",
-      "Integrasi websocket untuk memperbarui harga penawaran lelang secara instan tanpa perlu reload halaman.",
-      "Menerapkan caching gambar yang dioptimalkan untuk performa scrolling yang sangat mulus di perangkat low-end."
+      "Built a customizable field inspection platform that was successfully sold and adopted by multiple enterprise clients, following live prototype demonstrations to prospective customers.",
+      "Designed a conditional, multi-format questionnaire engine — supporting photo evidence, GPS geofencing, and digital signatures — allowing flexible customization per client and industry requirements.",
+      "Architected the app's core logic (Provider-based state management, dynamic form navigation) to support scalability across multiple client use cases with minimal code changes."
     ],
     componentsUsed: [
       {
@@ -115,9 +114,9 @@ export const projects = [
       "/projects/project-2.png"
     ],
     descriptionPoints: [
-      "Mengintegrasikan fitur geofencing untuk memastikan inspektur berada tepat di lokasi sebelum mengisi formulir.",
-      "Membuat builder kuesioner dinamis yang mendukung validasi input kompleks dan percabangan logika pertanyaan.",
-      "Mengotomatiskan penandaan koordinat GPS presisi tinggi pada setiap foto bukti inspeksi."
+      "Served as the dedicated mobile developer for an international client-facing car auction platform (Philippines-based client, sourcing vehicles from Japan and New Zealand), working the entire mobile frontend while collaborating with the client's web team.",
+      "Built end-to-end auction functionality covering real-time bidding, automated transaction confirmations, and user-specific activity tracking (history, saved listings, and inventory visibility) — enabling users to discover, bid, and manage vehicle auctions seamlessly from a single app.",
+      "Delivered a production-ready mobile platform engineered for reliability under concurrent bidding activity, supporting live auction operations for an overseas enterprise client."
     ],
     componentsUsed: [
       {
@@ -148,9 +147,9 @@ export const projects = [
       "/projects/project-3.png"
     ],
     descriptionPoints: [
-      "Menyediakan kalkulasi jadwal shalat offline menggunakan koordinat GPS dan rumus astronomi standar industri.",
-      "Integrasi sensor kompas internal perangkat untuk menunjukkan arah kiblat secara interaktif dan presisi.",
-      "Menyajikan fitur bacaan Al-Quran offline lengkap dengan terjemahan bahasa Indonesia dan audio murattal."
+      "Independently designed and developed a personal Islamic companion app (Flutter) — published as an open-source project on GitHub with downloadable releases.",
+      "Built core Islamic companion features including prayer time tracking with adjustable settings and custom adhan notifications, Qibla direction finder and nearby mosque locator, and Quran reader with daily hadith modules including multi-language localization support.",
+      "Engineered a home screen widget with scheduled background updates via WorkManager, syncing real-time prayer data from the Al Adhan API with local SQLite caching, and implemented dark mode theming for a polished user experience."
     ],
     componentsUsed: [
       {
