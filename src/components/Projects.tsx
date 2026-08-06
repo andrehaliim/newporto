@@ -4,6 +4,7 @@ import { ExternalLink, Info } from "lucide-react";
 import { projects } from "@/data/portfolio";
 import SectionLabel from "./SectionLabel";
 import { GithubIcon } from "./icons/BrandIcons";
+import LiveDemoButton from "./LiveDemoButton";
 
 export default function Projects() {
   return (
@@ -69,14 +70,12 @@ export default function Projects() {
                 >
                   <Info size={14} /> Detail
                 </Link>
-                <a
-                  href={project.demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <LiveDemoButton
+                  demoUrl={project.demoUrl}
                   className="inline-flex items-center gap-1.5 text-text hover:text-accent-2 transition-colors"
                 >
                   <ExternalLink size={14} /> Demo
-                </a>
+                </LiveDemoButton>
                 <a
                   href={project.repoUrl}
                   target="_blank"

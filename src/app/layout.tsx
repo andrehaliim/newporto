@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Andre Haliim — Flutter Developer",
-  description: "Portfolio Andre Haliim, Flutter Developer.",
+  title: "Andre Haliim — Software Engineer",
+  description: "Portfolio Andre Haliim, Software Engineer.",
 };
 
 export default function RootLayout({

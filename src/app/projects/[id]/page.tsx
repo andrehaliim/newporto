@@ -7,6 +7,7 @@ import { ArrowLeft, ExternalLink, Layers, Link as LinkIcon } from "lucide-react"
 import { projects } from "@/data/portfolio";
 import { GithubIcon, DartIcon } from "@/components/icons/BrandIcons";
 import ThemeToggle from "@/components/ThemeToggle";
+import LiveDemoButton from "@/components/LiveDemoButton";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -141,11 +142,10 @@ export default function ProjectDetailPage({ params }: PageProps) {
                   <button
                     key={idx}
                     onClick={() => setActiveImageIndex(idx)}
-                    className={`relative aspect-[9/16] w-14 flex-shrink-0 overflow-hidden rounded border transition-all ${
-                      activeImageIndex === idx
+                    className={`relative aspect-[9/16] w-14 flex-shrink-0 overflow-hidden rounded border transition-all ${activeImageIndex === idx
                         ? "border-accent-2 scale-[0.95] ring-1 ring-accent-2"
                         : "border-border hover:border-text-muted bg-surface-2"
-                    }`}
+                      }`}
                   >
                     <Image
                       src={src}
@@ -164,14 +164,10 @@ export default function ProjectDetailPage({ params }: PageProps) {
           <div className="lg:col-span-5 space-y-8">
             {/* Action Links */}
             <div className="flex flex-wrap gap-4 font-mono text-sm">
-              <a
-                href={project.demoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <LiveDemoButton
+                demoUrl={project.demoUrl}
                 className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-center font-semibold text-bg transition hover:bg-accent/90"
-              >
-                <ExternalLink size={16} /> Live Demo
-              </a>
+              />
               <a
                 href={project.repoUrl}
                 target="_blank"
@@ -181,58 +177,6 @@ export default function ProjectDetailPage({ params }: PageProps) {
                 <GithubIcon size={16} /> Repository
               </a>
             </div>
-
-            {/* Description Bullet Points */}
-            {project.descriptionPoints && project.descriptionPoints.length > 0 && (
-              <div className="space-y-3">
-                <h3 className="font-mono text-sm font-semibold uppercase tracking-wider text-text-muted">
-                  Key Features & Implementation
-                </h3>
-                <ul className="space-y-2 text-sm text-text-muted list-disc pl-5 leading-relaxed">
-                  {project.descriptionPoints.map((point, index) => (
-                    <li key={index} className="marker:text-accent-pink">
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {/* Components Used */}
-            {project.componentsUsed && project.componentsUsed.length > 0 && (
-              <div className="space-y-3">
-                <h3 className="font-mono text-sm font-semibold uppercase tracking-wider text-text-muted">
-                  Components & Packages
-                </h3>
-                <div className="divide-y divide-border rounded-xl border border-border bg-surface overflow-hidden">
-                  {project.componentsUsed.map((comp, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-center justify-between p-3 text-sm transition hover:bg-surface-2"
-                    >
-                      <div className="flex items-center gap-2.5">
-                        <div className="rounded bg-bg p-1.5 text-accent-pink">
-                          <Layers size={14} />
-                        </div>
-                        <div>
-                          <p className="font-medium text-text">{comp.name}</p>
-                          <p className="text-xs text-text-muted">{comp.type}</p>
-                        </div>
-                      </div>
-                      <a
-                        href={comp.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 font-mono text-xs text-accent-2 hover:underline"
-                        title={`Buka pub.dev / dokumentasi ${comp.name}`}
-                      >
-                        Docs <LinkIcon size={10} />
-                      </a>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
 
             {/* Tech Stack */}
             <div className="space-y-3">
@@ -250,8 +194,85 @@ export default function ProjectDetailPage({ params }: PageProps) {
                 ))}
               </div>
             </div>
+
+            <div className="space-y-3">
+              <h3 className="font-mono text-sm font-semibold uppercase tracking-wider text-text-muted">
+                Overview
+              </h3>
+              <p className="text-sm text-text-muted leading-relaxed text-justify">
+                {project.overview}
+              </p>
+            </div>
+
+            {/* Description Bullet Points */}
+            {project.descriptionPoints && project.descriptionPoints.length > 0 && (
+              <div className="space-y-3">
+                <h3 className="font-mono text-sm font-semibold uppercase tracking-wider text-text-muted">
+                  Key Features
+                </h3>
+                <ul className="space-y-2 text-sm text-text-muted list-disc pl-5 leading-relaxed">
+                  {project.descriptionPoints.map((point, index) => {
+                    const match = point.match(/^([^—\-:]+[\—\-:])\s*(.*)$/);
+                    if (match) {
+                      return (
+                        <li key={index} className="marker:text-accent-pink">
+                          <strong className="font-semibold text-text">{match[1]}</strong> {match[2]}
+                        </li>
+                      );
+                    }
+                    return (
+                      <li key={index} className="marker:text-accent-pink">
+                        {point}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
+
+            {/* Components Used */}
           </div>
         </div>
+
+        {/* Full-width Components & Packages Section */}
+        {project.componentsUsed && project.componentsUsed.length > 0 && (
+          <div className="mt-12 border-t border-border pt-8 space-y-4">
+            <h3 className="font-mono text-sm font-semibold uppercase tracking-wider text-text-muted">
+              Components & Packages
+            </h3>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+              {project.componentsUsed.map((comp, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center justify-between gap-2.5 rounded-xl border border-border bg-surface p-3 transition hover:border-text-muted hover:bg-surface-2 min-w-0"
+                >
+                  <div className="flex items-center gap-2 min-w-0">
+                    <div className="rounded bg-bg p-1.5 text-accent-pink flex-shrink-0">
+                      <Layers size={14} />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="font-medium text-text text-xs truncate" title={comp.name}>
+                        {comp.name}
+                      </p>
+                      <p className="text-[10px] text-text-muted truncate" title={comp.type}>
+                        {comp.type}
+                      </p>
+                    </div>
+                  </div>
+                  <a
+                    href={comp.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-0.5 font-mono text-[11px] text-accent-2 hover:underline flex-shrink-0"
+                    title={`Buka pub.dev / dokumentasi ${comp.name}`}
+                  >
+                    Docs <LinkIcon size={10} />
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </main>
     </>
   );

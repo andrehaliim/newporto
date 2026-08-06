@@ -33,8 +33,8 @@ export const projects = [
     id: "proj-1",
     name: "gts",
     title: "Gold Trading & Sales App",
-    description:
-      "An offline-first mobile app for recording gold trading transactions across a nationwide sales network.",
+    description: "An offline-first mobile app for recording gold trading transactions across a nationwide sales network.",
+    overview: "Gold Trading & Sales (GTS) is a comprehensive mobile application designed to streamline gold trading operations for a nationwide sales network. The app addresses the critical need for offline-first functionality, ensuring that sales agents can record transactions, track customer balances, and manage inventory even in areas with poor or no internet connectivity. By combining robust data synchronization, accurate weight-based calculations, and a secure authentication system, GTS empowers sales teams to operate with confidence and precision.",
     image: "/projects/gts/logo.png",
     screenshots: "/projects/gts",
     screenshotCount: 7,
@@ -80,6 +80,7 @@ export const projects = [
     title: "AutoFleet Capital",
     description:
       "A mobile front-end for an international car auction platform sourcing vehicles from Japan and New Zealand.",
+    overview: "AutoFleet Capital (AFC) is an international car auction platform connecting buyers with a curated selection of vehicles sourced from Japan and New Zealand. The mobile application provides a seamless and intuitive interface for users to browse auction listings, view detailed vehicle information, and participate in real-time bidding. AFC bridges the geographical gap between suppliers and buyers, offering a transparent and efficient marketplace for vehicle procurement.",
     image: "/projects/afc/logo.png",
     screenshots: "/projects/afc",
     screenshotCount: 8,
@@ -121,6 +122,7 @@ export const projects = [
     title: "Field Inspection App",
     description:
       "A customizable field inspection platform with configurable digital questionnaires.",
+    overview: "Fika is a comprehensive field inspection platform designed to digitize and streamline inspection workflows for enterprise clients. The application allows businesses to create custom inspection forms with conditional logic, various field types, and automated scoring. With offline-first capabilities, real-time data synchronization, and role-based access control, Fika empowers field teams to conduct inspections efficiently and securely — whether online or offline.",
     image: "/projects/fika/logo.png",
     screenshots: "/projects/fika",
     screenshotCount: 6,
@@ -159,7 +161,8 @@ export const projects = [
     name: "deenly",
     title: "Deenly — Islamic Companion App",
     description:
-      "A personal, open-source Islamic companion app with prayer times, Qibla direction, and Quran features.",
+      "A Muslim companion app that combines location-aware accurate prayer times (Al Adhan API), adhan notifications, a home screen widget, and real-time Qibla direction, backed by background sync and EN/ID localization.",
+    overview: "Deenly is a personal project born out of a simple need: staying connected to daily prayer times without constantly checking a separate app. Built independently with Flutter, it's designed as an all-in-one Islamic companion that lives quietly in the background — syncing accurate, location-based prayer schedules, sending timely adhan reminders, and even surfacing prayer times right on the home screen. It's open-source, actively maintained, and reflects a deep dive into native platform integrations (background tasks, home screen widgets, device sensors) that go beyond typical CRUD app development.",
     image: "/projects/deenly/logo.png",
     screenshots: "/projects/deenly",
     screenshotCount: 9,
@@ -175,30 +178,75 @@ export const projects = [
       "Screenshot 9"
     ],
     descriptionPoints: [
-      "Independently designed and developed a personal Islamic companion app (Flutter) — published as an open-source project on GitHub with downloadable releases.",
-      "Built core Islamic companion features including prayer time tracking with adjustable settings and custom adhan notifications, Qibla direction finder and nearby mosque locator, and Quran reader with daily hadith modules including multi-language localization support.",
-      "Engineered a home screen widget with scheduled background updates via WorkManager, syncing real-time prayer data from the Al Adhan API with local SQLite caching, and implemented dark mode theming for a polished user experience."
+      "Location-Aware Prayer Times — Fetches accurate daily and yearly prayer schedules from the Al Adhan API based on the user's GPS location, with results cached locally via SQLite for offline access.",
+      "Custom Adhan Notifications — Delivers scheduled prayer notifications with custom adhan sounds and dedicated Android notification channels, fully adjustable by the user.",
+      "Home Screen Widget — A native home screen widget powered by WorkManager, running scheduled background syncs to keep prayer times up to date without opening the app.",
+      "Qibla Direction Finder — Uses the device's compass sensor to point users toward the Qibla in real time.",
+      "Multi-Language Support — Full EN/ID localization using Flutter's ARB-based system, with a custom LocaleProvider for seamless language switching.",
+      "Dark Mode — A polished, theme-aware UI for comfortable use at any time of day."
     ],
     componentsUsed: [
+      {
+        name: "home_widget",
+        type: "Home Screen Widget",
+        url: "https://pub.dev/packages/home_widget"
+      },
+      {
+        name: "workmanager",
+        type: "Background Task Scheduler",
+        url: "https://pub.dev/packages/workmanager"
+      },
+      {
+        name: "flutter_compass",
+        type: "Device Compass Sensor (Qibla Direction)",
+        url: "https://pub.dev/packages/flutter_compass"
+      },
+      {
+        name: "flutter_local_notifications",
+        type: "Push Notifications",
+        url: "https://pub.dev/packages/flutter_local_notifications"
+      },
+      {
+        name: "geolocator",
+        type: "GPS Location Services",
+        url: "https://pub.dev/packages/geolocator"
+      },
+      {
+        name: "geocoding",
+        type: "Reverse Geocoding",
+        url: "https://pub.dev/packages/geocoding"
+      },
+      {
+        name: "timezone",
+        type: "Timezone Calculation",
+        url: "https://pub.dev/packages/timezone"
+      },
       {
         name: "sqflite",
         type: "Local Database",
         url: "https://pub.dev/packages/sqflite"
       },
       {
-        name: "adhan_api",
+        name: "Al Adhan API",
         type: "Prayer Times Calculations",
-        url: "https://pub.dev/packages/adhan"
+        url: "https://aladhan.com/prayer-times-api"
       },
       {
-        name: "flutter_compass",
-        type: "Device Compass",
-        url: "https://pub.dev/packages/flutter_compass"
+        name: "provider",
+        type: "State Management",
+        url: "https://pub.dev/packages/provider"
       }
     ],
-    tech: ["Flutter", "sqflite", "adhan_api"],
-    demoUrl: "https://example.com",
-    repoUrl: "https://github.com/username/project-empat",
+    tech: [
+      "Flutter",
+      "sqflite",
+      "WorkManager",
+      "Al Adhan API",
+      "home_widget",
+      "flutter_compass"
+    ],
+    demoUrl: "https://api.github.com/repos/andrehaliim/deenly/releases/latest",
+    repoUrl: "https://github.com/andrehaliim/deenly",
     featured: false,
   },
 ];
