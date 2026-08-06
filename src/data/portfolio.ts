@@ -9,7 +9,7 @@ export const profile = {
   tagline:
     "Turning ideas into working software, one clean line of code at a time.",
   location: "Bandung, Indonesia",
-  email: "andrehaliimkurniawan@gmail.com",
+  email: "Email",
   photo: "/profile.jpeg",
   cvFile: "/AndreHaliim_CV.pdf",
   socials: {
@@ -121,7 +121,7 @@ export const projects = [
     title: "Field Inspection App",
     description:
       "A customizable field inspection platform with configurable digital questionnaires.",
-    image: "/projects/logo.png",
+    image: "/projects/fika/logo.png",
     screenshots: "/projects/fika",
     screenshotCount: 6,
     screenshotDescription: [
