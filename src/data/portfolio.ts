@@ -35,11 +35,17 @@ export const projects = [
     title: "Gold Trading & Sales App",
     description:
       "An offline-first mobile app for recording gold trading transactions across a nationwide sales network.",
-    image: "/projects/project-1.png",
-    screenshots: [
-      "/projects/autofleet-1.jpg",
-      "/projects/project-2.png",
-      "/projects/project-3.png"
+    image: "/projects/gts/logo.png",
+    screenshots: "/projects/gts",
+    screenshotCount: 7,
+    screenshotDescription: [
+      "Screenshot 1",
+      "Screenshot 2",
+      "Screenshot 3",
+      "Screenshot 4",
+      "Screenshot 5",
+      "Screenshot 6",
+      "Screenshot 7"
     ],
     descriptionPoints: [
       "Designed an offline-first architecture to support 100+ sales agents operating across Indonesia, ensuring uninterrupted transaction recording despite inconsistent connectivity in remote areas.",
@@ -74,11 +80,18 @@ export const projects = [
     title: "AutoFleet Capital",
     description:
       "A mobile front-end for an international car auction platform sourcing vehicles from Japan and New Zealand.",
-    image: "/projects/project-2.png",
-    screenshots: [
-      "/projects/project-2.png",
-      "/projects/project-1.png",
-      "/projects/project-4.png"
+    image: "/projects/afc/logo.png",
+    screenshots: "/projects/afc",
+    screenshotCount: 8,
+    screenshotDescription: [
+      "Screenshot 1",
+      "Screenshot 2",
+      "Screenshot 3",
+      "Screenshot 4",
+      "Screenshot 5",
+      "Screenshot 6",
+      "Screenshot 7",
+      "Screenshot 8"
     ],
     descriptionPoints: [
       "Built a customizable field inspection platform that was successfully sold and adopted by multiple enterprise clients, following live prototype demonstrations to prospective customers.",
@@ -108,10 +121,16 @@ export const projects = [
     title: "Field Inspection App",
     description:
       "A customizable field inspection platform with configurable digital questionnaires.",
-    image: "/projects/project-3.png",
-    screenshots: [
-      "/projects/project-3.png",
-      "/projects/project-2.png"
+    image: "/projects/logo.png",
+    screenshots: "/projects/fika",
+    screenshotCount: 6,
+    screenshotDescription: [
+      "Screenshot 1",
+      "Screenshot 2",
+      "Screenshot 3",
+      "Screenshot 4",
+      "Screenshot 5",
+      "Screenshot 6"
     ],
     descriptionPoints: [
       "Served as the dedicated mobile developer for an international client-facing car auction platform (Philippines-based client, sourcing vehicles from Japan and New Zealand), working the entire mobile frontend while collaborating with the client's web team.",
@@ -141,10 +160,19 @@ export const projects = [
     title: "Deenly — Islamic Companion App",
     description:
       "A personal, open-source Islamic companion app with prayer times, Qibla direction, and Quran features.",
-    image: "/projects/project-4.png",
-    screenshots: [
-      "/projects/project-4.png",
-      "/projects/project-3.png"
+    image: "/projects/deenly/logo.png",
+    screenshots: "/projects/deenly",
+    screenshotCount: 9,
+    screenshotDescription: [
+      "Screenshot 1",
+      "Screenshot 2",
+      "Screenshot 3",
+      "Screenshot 4",
+      "Screenshot 5",
+      "Screenshot 6",
+      "Screenshot 7",
+      "Screenshot 8",
+      "Screenshot 9"
     ],
     descriptionPoints: [
       "Independently designed and developed a personal Islamic companion app (Flutter) — published as an open-source project on GitHub with downloadable releases.",

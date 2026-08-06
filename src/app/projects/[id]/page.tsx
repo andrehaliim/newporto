@@ -32,10 +32,18 @@ export default function ProjectDetailPage({ params }: PageProps) {
     );
   }
 
-  // Fallback to project.image if screenshots are not defined or empty
-  const screenshots = project.screenshots && project.screenshots.length > 0
-    ? project.screenshots
-    : [project.image];
+  // Generate screenshot list from directory path and screenshotCount (e.g. /projects/deenly -> /projects/deenly/deenly-1.png, deenly-2.png)
+  const screenshots = (() => {
+    if (!project.screenshots) return [project.image];
+    if (Array.isArray(project.screenshots)) return project.screenshots;
+
+    const basePath = project.screenshots.replace(/\/$/, "");
+    const count = (project as { screenshotCount?: number }).screenshotCount || 1;
+    return Array.from(
+      { length: count },
+      (_, i) => `${basePath}/${project.name}-${i + 1}.png`
+    );
+  })();
 
   return (
     <>
@@ -93,11 +101,10 @@ export default function ProjectDetailPage({ params }: PageProps) {
             <h3 className="font-mono text-sm font-semibold uppercase tracking-wider text-text-muted">
               App Screenshots
             </h3>
-            
+
             <div className="flex flex-col items-center justify-center p-6 rounded-2xl border border-border bg-surface-2/30">
               {/* Phone Mockup Frame */}
               <div className="relative mx-auto w-full max-w-[280px] aspect-[9/19.5] rounded-[38px] border-[10px] border-[#0d1527] shadow-2xl overflow-hidden bg-bg ring-1 ring-border">
-                              
                 {/* Content Area */}
                 <div className="relative h-full w-full overflow-hidden bg-surface">
                   <Image
@@ -108,7 +115,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
                     sizes="(min-width: 1024px) 25vw, 75vw"
                     className="object-cover"
                   />
-                  
+
                   {/* Home Indicator */}
                   <div className="absolute bottom-1 left-1/2 z-20 h-1 w-24 -translate-x-1/2 rounded-full bg-white/20" />
                 </div>
@@ -118,6 +125,13 @@ export default function ProjectDetailPage({ params }: PageProps) {
               <div className="mt-4 rounded-full bg-surface-2 px-3 py-1 font-mono text-xs text-text border border-border">
                 {activeImageIndex + 1} / {screenshots.length}
               </div>
+
+              {/* Screenshot Description */}
+              {project.screenshotDescription?.[activeImageIndex] && (
+                <p className="mt-3 font-mono text-xs text-center text-text-muted max-w-xs leading-relaxed">
+                  {project.screenshotDescription[activeImageIndex]}
+                </p>
+              )}
             </div>
 
             {/* Thumbnails */}
