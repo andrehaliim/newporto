@@ -34,7 +34,9 @@ export const projects = [
     name: "gts",
     title: "Gold Trading & Sales App",
     description: "An offline-first mobile app for recording gold trading transactions across a nationwide sales network.",
-    overview: "Gold Trading & Sales (GTS) is a comprehensive mobile application designed to streamline gold trading operations for a nationwide sales network. The app addresses the critical need for offline-first functionality, ensuring that sales agents can record transactions, track customer balances, and manage inventory even in areas with poor or no internet connectivity. By combining robust data synchronization, accurate weight-based calculations, and a secure authentication system, GTS empowers sales teams to operate with confidence and precision.",
+    overview: [
+      "Gold Trading & Sales (GTS) is a comprehensive mobile application designed to streamline gold trading operations for a nationwide sales network. The app addresses the critical need for offline-first functionality, ensuring that sales agents can record transactions, track customer balances, and manage inventory even in areas with poor or no internet connectivity. By combining robust data synchronization, accurate weight-based calculations, and a secure authentication system, GTS empowers sales teams to operate with confidence and precision."
+    ],
     image: "/projects/gts/logo.png",
     screenshots: "/projects/gts",
     screenshotCount: 7,
@@ -70,8 +72,8 @@ export const projects = [
       }
     ],
     tech: ["Flutter", "Objectbox"],
-    demoUrl: "https://example.com",
-    repoUrl: "https://github.com/username/project-satu",
+    demoUrl: null,
+    repoUrl: null,
     featured: true,
   },
   {
@@ -80,7 +82,9 @@ export const projects = [
     title: "AutoFleet Capital",
     description:
       "A mobile front-end for an international car auction platform sourcing vehicles from Japan and New Zealand.",
-    overview: "AutoFleet Capital (AFC) is an international car auction platform connecting buyers with a curated selection of vehicles sourced from Japan and New Zealand. The mobile application provides a seamless and intuitive interface for users to browse auction listings, view detailed vehicle information, and participate in real-time bidding. AFC bridges the geographical gap between suppliers and buyers, offering a transparent and efficient marketplace for vehicle procurement.",
+    overview: [
+      "AutoFleet Capital (AFC) is an international car auction platform connecting buyers with a curated selection of vehicles sourced from Japan and New Zealand. The mobile application provides a seamless and intuitive interface for users to browse auction listings, view detailed vehicle information, and participate in real-time bidding. AFC bridges the geographical gap between suppliers and buyers, offering a transparent and efficient marketplace for vehicle procurement."
+    ],
     image: "/projects/afc/logo.png",
     screenshots: "/projects/afc",
     screenshotCount: 8,
@@ -112,8 +116,8 @@ export const projects = [
       }
     ],
     tech: ["Flutter"],
-    demoUrl: "https://example.com",
-    repoUrl: "https://github.com/username/project-dua",
+    demoUrl: null,
+    repoUrl: null,
     featured: true,
   },
   {
@@ -122,38 +126,103 @@ export const projects = [
     title: "Field Inspection App",
     description:
       "A customizable field inspection platform with configurable digital questionnaires.",
-    overview: "Fika is a comprehensive field inspection platform designed to digitize and streamline inspection workflows for enterprise clients. The application allows businesses to create custom inspection forms with conditional logic, various field types, and automated scoring. With offline-first capabilities, real-time data synchronization, and role-based access control, Fika empowers field teams to conduct inspections efficiently and securely — whether online or offline.",
+    overview: [
+      "Conventional field inspections often rely on paper-based or manual reporting, making them prone to human error, difficult to monitor in real time, and issues are typically only discovered by admins after the report is completed — not at the moment they occur.",
+      "FIKA Mobile was built as a digital solution to this problem. Admins can create inspection questionnaires with multiple question types (multiple choice, numeric input, yes/no), then assign them to field officers. Officers must check in based on their location (via geolocator) before filling out the questionnaire on-site, and any answer falling outside the defined normal range is automatically flagged as an issue and converted into a ticket for the admin. Final validation includes a digital signature and an on-site selfie as proof of attendance.",
+      "With this flow, inspections become faster, more accurate, and automatically documented — admins can act on issues as soon as they're found, without waiting for a manual report, while minimizing the risk of invalid or inaccurate field data."
+    ],
     image: "/projects/fika/logo.png",
     screenshots: "/projects/fika",
     screenshotCount: 6,
     screenshotDescription: [
-      "Screenshot 1",
-      "Screenshot 2",
-      "Screenshot 3",
-      "Screenshot 4",
-      "Screenshot 5",
-      "Screenshot 6"
+      "Login Page",
+      "Dashboard Page",
+      "Questionnaire Page",
+      "Confirmation Page",
+      "Issues Page",
+      "Setting Page"
     ],
     descriptionPoints: [
-      "Served as the dedicated mobile developer for an international client-facing car auction platform (Philippines-based client, sourcing vehicles from Japan and New Zealand), working the entire mobile frontend while collaborating with the client's web team.",
-      "Built end-to-end auction functionality covering real-time bidding, automated transaction confirmations, and user-specific activity tracking (history, saved listings, and inventory visibility) — enabling users to discover, bid, and manage vehicle auctions seamlessly from a single app.",
-      "Delivered a production-ready mobile platform engineered for reliability under concurrent bidding activity, supporting live auction operations for an overseas enterprise client."
+      "Dynamic Questionnaire Engine — Inspection forms are built dynamically with 3 question types: multiple choice, numeric input, and yes/no, displayed sequentially using PageView.builder.",
+      "Location based Check in/Check out — Officers must be physically present at the location (validated in real time via geolocator) before starting a questionnaire, and check out once it's completed.",
+      "Automatic Issue Detection — The system automatically flags answers that fall outside the defined normal range for each question, instantly triggering an issue report form.",
+      "Issue Ticketing — Issues reported in the field are converted into tickets and sent directly to the admin for follow-up.",
+      "Digital Signature & Selfie Verification — Final validation includes a digital signature (Syncfusion Signature Pad) and an on-site selfie as proof of attendance.",
+      "Photo Documentation — Field conditions and issues are documented through the image_picker package.",
+      "Authentication — Secure login flow with session persistence using SharedPreferences, managed via Provider.",
+      "Data Sync (Cache vs Fetch) — Cached issue data is separated from freshly fetched data to maintain performance and consistency.",
+      "Smooth UX — Loading animations, snackbar notifications, and smooth page transitions for a better user experience.",
     ],
     componentsUsed: [
       {
-        name: "Geolocator",
-        type: "GPS Location",
+        name: "cupertino_icons",
+        type: "iOS Icon Set",
+        url: "https://pub.dev/packages/cupertino_icons"
+      },
+      {
+        name: "package_info_plus",
+        type: "App Version Info",
+        url: "https://pub.dev/packages/package_info_plus"
+      },
+      {
+        name: "shared_preferences",
+        type: "Local Storage",
+        url: "https://pub.dev/packages/shared_preferences"
+      },
+      {
+        name: "provider",
+        type: "State Management",
+        url: "https://pub.dev/packages/provider"
+      },
+      {
+        name: "loading_animation_widget",
+        type: "Loading Animation",
+        url: "https://pub.dev/packages/loading_animation_widget"
+      },
+      {
+        name: "page_transition",
+        type: "Page Transition",
+        url: "https://pub.dev/packages/page_transition"
+      },
+      {
+        name: "syncfusion_flutter_signaturepad",
+        type: "Digital Signature Pad",
+        url: "https://pub.dev/packages/syncfusion_flutter_signaturepad"
+      },
+      {
+        name: "image_picker",
+        type: "Image Picker",
+        url: "https://pub.dev/packages/image_picker"
+      },
+      {
+        name: "animated_snack_bar",
+        type: "Snack Bar",
+        url: "https://pub.dev/packages/animated_snack_bar"
+      },
+      {
+        name: "timer_count_down",
+        type: "Countdown Timer",
+        url: "https://pub.dev/packages/timer_count_down"
+      },
+      {
+        name: "intl",
+        type: "Internationalization & Date Formatting",
+        url: "https://pub.dev/packages/intl"
+      },
+      {
+        name: "geolocator",
+        type: "Location Services",
         url: "https://pub.dev/packages/geolocator"
       },
       {
-        name: "camera",
-        type: "Camera API",
-        url: "https://pub.dev/packages/camera"
-      }
+        name: "loading_overlay",
+        type: "Loading Overlay",
+        url: "https://pub.dev/packages/loading_overlay"
+      },
     ],
     tech: ["Flutter", "Geolocator"],
-    demoUrl: "https://example.com",
-    repoUrl: "https://github.com/username/project-tiga",
+    demoUrl: null,
+    repoUrl: null,
     featured: false,
   },
   {
@@ -162,27 +231,29 @@ export const projects = [
     title: "Deenly — Islamic Companion App",
     description:
       "A Muslim companion app that combines location-aware accurate prayer times (Al Adhan API), adhan notifications, a home screen widget, and real-time Qibla direction, backed by background sync and EN/ID localization.",
-    overview: "Deenly is a personal project born out of a simple need: staying connected to daily prayer times without constantly checking a separate app. Built independently with Flutter, it's designed as an all-in-one Islamic companion that lives quietly in the background — syncing accurate, location-based prayer schedules, sending timely adhan reminders, and even surfacing prayer times right on the home screen. It's open-source, actively maintained, and reflects a deep dive into native platform integrations (background tasks, home screen widgets, device sensors) that go beyond typical CRUD app development.",
+    overview: [
+      "Deenly is a personal project born out of a simple need: staying connected to daily prayer times without constantly checking a separate app. Built independently with Flutter, it's designed as an all-in-one Islamic companion that lives quietly in the background — syncing accurate, location-based prayer schedules, sending timely adhan reminders, and even surfacing prayer times right on the home screen. It's open-source, actively maintained, and reflects a deep dive into native platform integrations (background tasks, home screen widgets, device sensors) that go beyond typical CRUD app development."
+    ],
     image: "/projects/deenly/logo.png",
     screenshots: "/projects/deenly",
     screenshotCount: 9,
     screenshotDescription: [
-      "Screenshot 1",
-      "Screenshot 2",
-      "Screenshot 3",
-      "Screenshot 4",
-      "Screenshot 5",
-      "Screenshot 6",
-      "Screenshot 7",
-      "Screenshot 8",
-      "Screenshot 9"
+      "Home Page",
+      "Prayer Times",
+      "Qibla Direction",
+      "Quran Surah List",
+      "Quran Surah Detail",
+      "Nearby Mosque Page",
+      "Tasbeh Digital Page",
+      "Settings Page",
+      "Homescreen Prayer Widget"
     ],
     descriptionPoints: [
-      "Location-Aware Prayer Times — Fetches accurate daily and yearly prayer schedules from the Al Adhan API based on the user's GPS location, with results cached locally via SQLite for offline access.",
+      "Location Aware Prayer Times — Fetches accurate daily and yearly prayer schedules from the Al Adhan API based on the user's GPS location, with results cached locally via SQLite for offline access.",
       "Custom Adhan Notifications — Delivers scheduled prayer notifications with custom adhan sounds and dedicated Android notification channels, fully adjustable by the user.",
       "Home Screen Widget — A native home screen widget powered by WorkManager, running scheduled background syncs to keep prayer times up to date without opening the app.",
       "Qibla Direction Finder — Uses the device's compass sensor to point users toward the Qibla in real time.",
-      "Multi-Language Support — Full EN/ID localization using Flutter's ARB-based system, with a custom LocaleProvider for seamless language switching.",
+      "Multi Language Support — Full EN/ID localization using Flutter's ARB-based system, with a custom LocaleProvider for seamless language switching.",
       "Dark Mode — A polished, theme-aware UI for comfortable use at any time of day."
     ],
     componentsUsed: [

@@ -4,12 +4,13 @@ import { useState } from "react";
 import { ExternalLink, Loader2, Download } from "lucide-react";
 
 interface LiveDemoButtonProps {
-  demoUrl: string;
+  demoUrl?: string | null;
   className?: string;
   children?: React.ReactNode;
 }
 
 export default function LiveDemoButton({ demoUrl, className, children }: LiveDemoButtonProps) {
+  if (!demoUrl) return null;
   const [loading, setLoading] = useState(false);
 
   const handleClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {

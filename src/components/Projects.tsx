@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, Info } from "lucide-react";
+import { Download, ExternalLink, Info } from "lucide-react";
 import { projects } from "@/data/portfolio";
 import SectionLabel from "./SectionLabel";
 import { GithubIcon } from "./icons/BrandIcons";
@@ -21,7 +21,7 @@ export default function Projects() {
         {projects.map((project) => (
           <article
             key={project.id}
-            className="group overflow-hidden rounded-xl border border-border bg-surface transition hover:border-accent-2/60"
+            className="group flex flex-col overflow-hidden rounded-xl border border-border bg-surface transition hover:border-accent-2/60"
           >
             <Link href={`/projects/${project.id}`} className="block">
               <div className="flex items-center gap-2 border-b border-border bg-surface-2 px-4 py-2 font-mono text-xs text-text-muted">
@@ -42,7 +42,7 @@ export default function Projects() {
               </div>
             </Link>
 
-            <div className="p-5">
+            <div className="flex flex-1 flex-col p-5">
               <Link href={`/projects/${project.id}`} className="block group/title">
                 <h3 className="font-mono text-lg font-semibold text-text group-hover/title:text-accent-2 transition-colors">
                   {project.title}
@@ -63,27 +63,33 @@ export default function Projects() {
                 ))}
               </div>
 
-              <div className="mt-5 flex gap-4 font-mono text-sm border-t border-border/40 pt-4">
+              <div className="mt-auto pt-5 flex items-center justify-between font-mono text-sm border-t border-border/40">
                 <Link
                   href={`/projects/${project.id}`}
                   className="inline-flex items-center gap-1.5 text-text hover:text-accent-2 transition-colors"
                 >
                   <Info size={14} /> Detail
                 </Link>
-                <LiveDemoButton
-                  demoUrl={project.demoUrl}
-                  className="inline-flex items-center gap-1.5 text-text hover:text-accent-2 transition-colors"
-                >
-                  <ExternalLink size={14} /> Demo
-                </LiveDemoButton>
-                <a
-                  href={project.repoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-text hover:text-accent-2 transition-colors"
-                >
-                  <GithubIcon size={14} /> Kode
-                </a>
+                <div className="flex items-center gap-4">
+                  {project.demoUrl && (
+                    <LiveDemoButton
+                      demoUrl={project.demoUrl}
+                      className="inline-flex items-center gap-1.5 text-text hover:text-accent-2 transition-colors"
+                    >
+                      <Download size={14} /> Download
+                    </LiveDemoButton>
+                  )}
+                  {project.repoUrl && (
+                    <a
+                      href={project.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-text hover:text-accent-2 transition-colors"
+                    >
+                      <GithubIcon size={14} /> Code
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           </article>
