@@ -29,6 +29,11 @@ export default function Projects() {
                 <span className="h-2 w-2 rounded-full bg-accent/70" />
                 <span className="h-2 w-2 rounded-full bg-accent-2/70" />
                 <span className="ml-2">{project.name}.dart</span>
+                {project.isPersonal && (
+                  <span className="ml-auto rounded border border-accent/30 bg-accent/10 px-1.5 py-0.5 text-[10px] text-accent font-semibold uppercase tracking-wider">
+                    Personal
+                  </span>
+                )}
               </div>
 
               <div className="relative aspect-video w-full overflow-hidden bg-bg border-b border-border">

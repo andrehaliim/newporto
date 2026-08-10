@@ -35,46 +35,89 @@ export const projects = [
     title: "Gold Trading & Sales App",
     description: "An offline-first mobile app for recording gold trading transactions across a nationwide sales network.",
     overview: [
-      "Gold Trading & Sales (GTS) is a comprehensive mobile application designed to streamline gold trading operations for a nationwide sales network. The app addresses the critical need for offline-first functionality, ensuring that sales agents can record transactions, track customer balances, and manage inventory even in areas with poor or no internet connectivity. By combining robust data synchronization, accurate weight-based calculations, and a secure authentication system, GTS empowers sales teams to operate with confidence and precision."
+      "Gold trading agents and shops often rely on manual record-keeping or systems that depend entirely on a stable internet connection, even though buying and selling gold demands speed, high accuracy in weight and price calculations, and frequently happens in locations with unreliable connectivity. Multi-stage payments and receivables tracked manually are also prone to human error.",
+      "GTS Mobile is an offline-first gold trading application that manages the entire transaction flow, from recording trades and payments to tracking receivables, with reliable data synchronization even when the connection drops. Gold weight and price calculations use decimal-level precision to avoid rounding discrepancies that matter in the precious metals business.",
+      "The app speeds up transactions in the field, reduces the risk of human error in payment and receivables recording, keeps operating without internet access, and delivers instant reports and receipt printing via Bluetooth printer, all from a single mobile application."
     ],
     image: "/projects/gts/logo.png",
     screenshots: "/projects/gts",
     screenshotCount: 7,
     screenshotDescription: [
-      "Screenshot 1",
-      "Screenshot 2",
-      "Screenshot 3",
-      "Screenshot 4",
-      "Screenshot 5",
-      "Screenshot 6",
-      "Screenshot 7"
+      "Sales Login",
+      "Dashboard",
+      "Download Offline Data",
+      "New Sale",
+      "New Payment",
+      "Salesman Transaction Report",
+      "App Setting"
     ],
     descriptionPoints: [
-      "Designed an offline-first architecture to support 100+ sales agents operating across Indonesia, ensuring uninterrupted transaction recording despite inconsistent connectivity in remote areas.",
-      "Resolved a critical data integrity issue in the receivables system that could cause inaccurate balance reporting, by redesigning the calculation logic with an immutable base field.",
-      "Eliminated rounding errors in gold weight calculations caused by a floating-point precision limitation, preventing financial discrepancies in high-value transactions."
+      "Gold Trading Transaction Management — records purchases and sales with high-precision weight and price calculations",
+      "Payment & Receivables Module — real-time tracking of staged payments and customer balances",
+      "Offline First Mode — keeps every operation running without internet, syncing automatically once back online",
+      "Bluetooth Receipt Printing — instant on-site receipt printing via Bluetooth thermal printer",
+      "Dashboard & Visual Reports — interactive charts for monitoring transaction performance",
+      "Multi Flavor Build Support — Beta, Dev, Staging, and Live environments in a single codebase",
+      "Real Time Notifications — push notifications for important transaction updates",
+      "PDF Report Export — print and share transaction summaries in PDF format"
     ],
     componentsUsed: [
       {
-        name: "Objectbox",
+        name: "ObjectBox",
         type: "Database",
         url: "https://pub.dev/packages/objectbox"
       },
       {
-        name: "flutter_bloc",
-        type: "State Management",
-        url: "https://pub.dev/packages/flutter_bloc"
+        name: "Dio",
+        type: "Networking",
+        url: "https://pub.dev/packages/dio"
       },
       {
-        name: "path_provider",
-        type: "Storage Path",
-        url: "https://pub.dev/packages/path_provider"
+        name: "Decimal",
+        type: "Utility",
+        url: "https://pub.dev/packages/decimal"
+      },
+      {
+        name: "Drago Blue Printer",
+        type: "Hardware Integration",
+        url: "https://pub.dev/packages/drago_blue_printer"
+      },
+      {
+        name: "Firebase Crashlytics",
+        type: "Monitoring",
+        url: "https://pub.dev/packages/firebase_crashlytics"
+      },
+      {
+        name: "Firebase Messaging",
+        type: "Notifications",
+        url: "https://pub.dev/packages/firebase_messaging"
+      },
+      {
+        name: "FL Chart",
+        type: "Data Visualization",
+        url: "https://pub.dev/packages/fl_chart"
+      },
+      {
+        name: "PDFrx",
+        type: "Document Rendering",
+        url: "https://pub.dev/packages/pdfrx"
+      },
+      {
+        name: "Currency Text Input Formatter",
+        type: "UI/Formatting",
+        url: "https://pub.dev/packages/currency_text_input_formatter"
+      },
+      {
+        name: "Internet Connection Checker",
+        type: "Connectivity",
+        url: "https://pub.dev/packages/internet_connection_checker"
       }
     ],
-    tech: ["Flutter", "Objectbox"],
+    tech: ["Flutter", "ObjectBox", "Firebase", "Dio", "Provider"],
     demoUrl: null,
     repoUrl: null,
     featured: true,
+    isPersonal: false
   },
   {
     id: "proj-2",
@@ -119,6 +162,7 @@ export const projects = [
     demoUrl: null,
     repoUrl: null,
     featured: true,
+    isPersonal: false
   },
   {
     id: "proj-3",
@@ -135,9 +179,9 @@ export const projects = [
     screenshots: "/projects/fika",
     screenshotCount: 6,
     screenshotDescription: [
-      "Login Page",
-      "Dashboard Page",
-      "Questionnaire Page",
+      "Field Officer Login",
+      "Dashboard",
+      "Question Answer",
       "Confirmation Page",
       "Issues Page",
       "Setting Page"
@@ -155,16 +199,6 @@ export const projects = [
     ],
     componentsUsed: [
       {
-        name: "cupertino_icons",
-        type: "iOS Icon Set",
-        url: "https://pub.dev/packages/cupertino_icons"
-      },
-      {
-        name: "package_info_plus",
-        type: "App Version Info",
-        url: "https://pub.dev/packages/package_info_plus"
-      },
-      {
         name: "shared_preferences",
         type: "Local Storage",
         url: "https://pub.dev/packages/shared_preferences"
@@ -175,16 +209,6 @@ export const projects = [
         url: "https://pub.dev/packages/provider"
       },
       {
-        name: "loading_animation_widget",
-        type: "Loading Animation",
-        url: "https://pub.dev/packages/loading_animation_widget"
-      },
-      {
-        name: "page_transition",
-        type: "Page Transition",
-        url: "https://pub.dev/packages/page_transition"
-      },
-      {
         name: "syncfusion_flutter_signaturepad",
         type: "Digital Signature Pad",
         url: "https://pub.dev/packages/syncfusion_flutter_signaturepad"
@@ -193,11 +217,6 @@ export const projects = [
         name: "image_picker",
         type: "Image Picker",
         url: "https://pub.dev/packages/image_picker"
-      },
-      {
-        name: "animated_snack_bar",
-        type: "Snack Bar",
-        url: "https://pub.dev/packages/animated_snack_bar"
       },
       {
         name: "timer_count_down",
@@ -214,16 +233,12 @@ export const projects = [
         type: "Location Services",
         url: "https://pub.dev/packages/geolocator"
       },
-      {
-        name: "loading_overlay",
-        type: "Loading Overlay",
-        url: "https://pub.dev/packages/loading_overlay"
-      },
     ],
     tech: ["Flutter", "Geolocator"],
     demoUrl: null,
     repoUrl: null,
     featured: false,
+    isPersonal: false
   },
   {
     id: "proj-4",
@@ -319,6 +334,7 @@ export const projects = [
     demoUrl: "https://api.github.com/repos/andrehaliim/deenly/releases/latest",
     repoUrl: "https://github.com/andrehaliim/deenly",
     featured: false,
+    isPersonal: true
   },
 ];
 
