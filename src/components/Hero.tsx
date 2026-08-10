@@ -67,7 +67,7 @@ export default function Hero() {
             <span className="h-2 w-2 rounded-full bg-accent-pink/70" />
             <span className="h-2 w-2 rounded-full bg-accent/70" />
             <span className="h-2 w-2 rounded-full bg-accent-2/70" />
-            <span className="ml-2">portfolio.tsx</span>
+            <span className="ml-2">portfolio.dart</span>
           </div>
           <div className="flex px-2 py-5 font-mono text-sm leading-7 sm:text-base">
             <div className="select-none pr-4 text-right text-text-muted/60">

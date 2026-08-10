@@ -5,7 +5,7 @@ import SectionLabel from "./SectionLabel";
 export default function Experience() {
   return (
     <section id="experience" className="mx-auto max-w-5xl px-6 py-20">
-      <SectionLabel index="03" name="experience.tsx" />
+      <SectionLabel index="03" name="experience.dart" />
       <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
         <h2 className="font-mono text-2xl font-bold sm:text-3xl">
           Professional Experience

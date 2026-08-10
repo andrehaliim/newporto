@@ -9,7 +9,7 @@ import LiveDemoButton from "./LiveDemoButton";
 export default function Projects() {
   return (
     <section id="projects" className="mx-auto max-w-5xl px-6 py-20">
-      <SectionLabel index="02" name="projects.tsx" />
+      <SectionLabel index="02" name="projects.dart" />
       <h2 className="mt-3 font-mono text-2xl font-bold sm:text-3xl">
         Main Projects
       </h2>

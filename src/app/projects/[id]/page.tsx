@@ -58,7 +58,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
           <span className="h-2.5 w-2.5 rounded-full bg-accent/70" />
           <span className="h-2.5 w-2.5 rounded-full bg-accent-2/70" />
           <span className="ml-3 font-mono text-xs text-text-muted">
-            //project_detail — {project.name}.md
+            //project_detail
           </span>
           <div className="ml-auto">
             <ThemeToggle />
@@ -76,7 +76,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
           </Link>
           <div className="flex items-center gap-2 border-r border-border bg-surface px-4 py-2.5 text-accent-2">
             <DartIcon size={14} />
-            {project.name}.md
+            {project.name}.dart
           </div>
         </nav>
       </header>

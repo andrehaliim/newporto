@@ -43,7 +43,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="mx-auto max-w-5xl px-6 py-20">
-      <SectionLabel index="04" name="contact.tsx" />
+      <SectionLabel index="04" name="contact.dart" />
 
       <div className="mt-3 rounded-xl border border-border bg-surface p-8 sm:p-12 transition-all duration-500">
         <h2 className="font-mono text-2xl font-bold sm:text-3xl">
