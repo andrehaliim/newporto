@@ -45,12 +45,12 @@ export default function ProjectDetailPage({ params }: PageProps) {
   })();
 
   return (
-    <>
+    <div className="w-full">
       <title>{`${project.title} — Project Detail`}</title>
       <meta name="description" content={project.description} />
 
       {/* Navbar */}
-      <header className="sticky top-0 z-50 h-16 border-b border-border bg-canvas/90 backdrop-blur-md">
+      <header className="sticky top-0 z-50 w-full h-16 border-b border-border bg-canvas/90 backdrop-blur-md">
         <div className="mx-auto max-w-5xl px-6 h-full">
           <div className="flex h-full items-center justify-between">
             <Link
@@ -75,7 +75,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
       <main className="bg-canvas">
         {/* Project Hero — white canvas header */}
         <div className="border-b border-border">
-          <div className="mx-auto max-w-5xl px-6 py-12">
+          <div className="mx-auto max-w-5xl px-6 py-12 w-full">
             <div className="flex flex-wrap items-center gap-2 font-mono text-[12px] text-text-muted">
               <span>PROJECT // {project.id.toUpperCase()}</span>
               {project.isPersonal && (
@@ -84,10 +84,10 @@ export default function ProjectDetailPage({ params }: PageProps) {
                 </span>
               )}
             </div>
-            <h1 className="mt-3 font-sans text-[40px] font-normal leading-[1.2] text-text">
+            <h1 className="mt-3 font-sans text-[40px] font-normal leading-[1.2] text-text break-words">
               {project.title}
             </h1>
-            <p className="mt-4 text-[18px] font-normal leading-[1.4] text-text-muted max-w-3xl">
+            <p className="mt-4 text-[18px] font-normal leading-[1.4] text-text-muted max-w-3xl break-words">
               {project.description}
             </p>
 
@@ -118,8 +118,8 @@ export default function ProjectDetailPage({ params }: PageProps) {
         {/* Content grid */}
         <div className="mx-auto max-w-5xl px-6 py-12">
           <div className="grid gap-10 lg:grid-cols-12">
-            {/* Left — Screenshot gallery */}
-            <div className="lg:col-span-7 space-y-6">
+            {/* Left — Screenshot gallery (shown second on mobile) */}
+            <div className="order-2 lg:order-1 lg:col-span-7 space-y-6 min-w-0">
               <h3 className="font-mono text-xs uppercase tracking-wider text-text-muted">
                 App Screenshots
               </h3>
@@ -219,7 +219,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
             </div>
 
             {/* Right — Details */}
-            <div className="lg:col-span-5 space-y-8">
+            <div className="order-1 lg:order-2 lg:col-span-5 space-y-8 min-w-0">
               {/* Tech stack */}
               <div className="space-y-3">
                 <h3 className="font-mono text-xs uppercase tracking-wider text-text-muted">
@@ -253,12 +253,12 @@ export default function ProjectDetailPage({ params }: PageProps) {
                 <div className="space-y-3">
                   {Array.isArray(project.overview) ? (
                     project.overview.map((paragraph, index) => (
-                      <p key={index} className="text-[14px] leading-relaxed text-text-muted text-justify">
+                      <p key={index} className="text-[14px] leading-relaxed text-text-muted break-words">
                         {paragraph}
                       </p>
                     ))
                   ) : (
-                    <p className="text-[14px] leading-relaxed text-text-muted text-justify">{project.overview}</p>
+                    <p className="text-[14px] leading-relaxed text-text-muted break-words">{project.overview}</p>
                   )}
                 </div>
               </div>
@@ -273,7 +273,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
                     {project.descriptionPoints.map((point, index) => {
                       const match = point.match(/^([^—\-:]+[\—\-:])(\s*)(.*)$/);
                       return (
-                        <li key={index} className="text-[14px] leading-relaxed text-text-muted marker:text-sig-coral">
+                        <li key={index} className="text-[14px] leading-relaxed text-text-muted marker:text-sig-coral break-words">
                           {match ? (
                             <>
                               <strong className="font-semibold text-text">{match[1]}</strong>{match[2]}{match[3]}
@@ -293,7 +293,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
       </main>
 
       {/* Light CTA band at bottom */}
-      <div className="bg-surface-strong border-t border-border">
+      <div className="w-full bg-surface-strong border-t border-border">
         <div className="mx-auto max-w-5xl px-6 py-16 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
             <p className="font-sans text-[24px] font-normal text-text">Interested in more?</p>
@@ -307,6 +307,6 @@ export default function ProjectDetailPage({ params }: PageProps) {
           </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 }
