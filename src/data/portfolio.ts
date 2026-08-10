@@ -126,39 +126,85 @@ export const projects = [
     description:
       "A mobile front-end for an international car auction platform sourcing vehicles from Japan and New Zealand.",
     overview: [
-      "AutoFleet Capital (AFC) is an international car auction platform connecting buyers with a curated selection of vehicles sourced from Japan and New Zealand. The mobile application provides a seamless and intuitive interface for users to browse auction listings, view detailed vehicle information, and participate in real-time bidding. AFC bridges the geographical gap between suppliers and buyers, offering a transparent and efficient marketplace for vehicle procurement."
+      "Users across various regions in Japan who wanted to participate in car auctions often struggled to attend in person, leaving them dependent on local presence or intermediaries to bid on vehicles from auction houses. This gap made it difficult for buyers outside major auction hubs to access listings, track real-time updates, and make timely bidding decisions.",
+      "AFC Mobile bridges auction houses and bidders by bringing the entire car auction experience to mobile, with continuously updated vehicle data, accurate pricing calculations, and tools that let users browse listed vehicles in detail from anywhere. The app also includes recommendation features that help users discover and share auction listings with other potential bidders.",
+      "By moving the auction process to mobile, AFC removes the need for physical presence, speeds up how quickly users can act on new listings, and improves accuracy in pricing and data through real-time synchronization, making car auctions accessible to buyers regardless of location."
     ],
     image: "/projects/afc/logo.png",
     screenshots: "/projects/afc",
-    screenshotCount: 8,
+    screenshotCount: 7,
     screenshotDescription: [
-      "Screenshot 1",
-      "Screenshot 2",
-      "Screenshot 3",
-      "Screenshot 4",
-      "Screenshot 5",
-      "Screenshot 6",
-      "Screenshot 7",
-      "Screenshot 8"
+      "User Login",
+      "Dashboard",
+      "Vehicle Search Filter",
+      "Vehicle List",
+      "Vehicle Detail",
+      "Recommend Vehicle",
+      "Bid Vehicle"
     ],
     descriptionPoints: [
-      "Built a customizable field inspection platform that was successfully sold and adopted by multiple enterprise clients, following live prototype demonstrations to prospective customers.",
-      "Designed a conditional, multi-format questionnaire engine — supporting photo evidence, GPS geofencing, and digital signatures — allowing flexible customization per client and industry requirements.",
-      "Architected the app's core logic (Provider-based state management, dynamic form navigation) to support scalability across multiple client use cases with minimal code changes."
+      "Real Time Auction Listings — continuously updated vehicle data synced directly from auction houses",
+      "Multi Image Vehicle Gallery — browse detailed vehicle photos with full-screen viewing and carousel sliders",
+      "Accurate Price Calculation — precise currency formatting and computation for bidding and vehicle values",
+      "Vehicle Recommendation & Sharing — recommend listed vehicles to other users to encourage bidding",
+      "Advanced Search & Filtering — dropdown-based search to quickly find vehicles matching specific criteria",
+      "Image Compression & Optimization — efficient photo uploads even under limited connectivity",
+      "Document & File Handling — attach and manage auction-related files and documents",
+      "Responsive Cross-Device UI — consistent layout and scaling across different screen sizes"
     ],
     componentsUsed: [
       {
-        name: "cached_network_image",
-        type: "Image Caching",
-        url: "https://pub.dev/packages/cached_network_image"
+        name: "Dio",
+        type: "Networking",
+        url: "https://pub.dev/packages/dio"
       },
       {
-        name: "web_socket_channel",
-        type: "Websocket Client",
-        url: "https://pub.dev/packages/web_socket_channel"
+        name: "Flutter Image Compress",
+        type: "Media Optimization",
+        url: "https://pub.dev/packages/flutter_image_compress"
+      },
+      {
+        name: "Multi Image Picker View",
+        type: "Media Handling",
+        url: "https://pub.dev/packages/multi_image_picker_view"
+      },
+      {
+        name: "Image Picker",
+        type: "Media Handling",
+        url: "https://pub.dev/packages/image_picker"
+      },
+      {
+        name: "Fan Carousel Image Slider",
+        type: "UI/Media Display",
+        url: "https://pub.dev/packages/fan_carousel_image_slider"
+      },
+      {
+        name: "Currency Text Input Formatter",
+        type: "UI/Formatting",
+        url: "https://pub.dev/packages/currency_text_input_formatter"
+      },
+      {
+        name: "Flutter ScreenUtil",
+        type: "Responsive Design",
+        url: "https://pub.dev/packages/flutter_screenutil"
+      },
+      {
+        name: "Dropdown Search",
+        type: "UI Component",
+        url: "https://pub.dev/packages/dropdown_search"
+      },
+      {
+        name: "File Picker",
+        type: "File Handling",
+        url: "https://pub.dev/packages/file_picker"
+      },
+      {
+        name: "Provider",
+        type: "State Management",
+        url: "https://pub.dev/packages/provider"
       }
     ],
-    tech: ["Flutter"],
+    tech: ["Flutter", "Dio", "Provider", "Flutter ScreenUtil", "Flutter Image Compress"],
     demoUrl: null,
     repoUrl: null,
     featured: true,
