@@ -27,9 +27,13 @@ export default function Experience() {
             <h3 className="mt-1 font-mono text-lg font-semibold text-text">
               {exp.role} <span className="text-text-muted">· {exp.company}</span>
             </h3>
-            <p className="mt-2 max-w-2xl text-sm text-text-muted">
-              {exp.description}
-            </p>
+            <ul className="mt-2 max-w-2xl space-y-2 text-sm text-text-muted list-disc pl-5 leading-relaxed">
+              {exp.description.map((point, index) => (
+                <li key={index} className="marker:text-accent-2">
+                  {point}
+                </li>
+              ))}
+            </ul>
           </div>
         ))}
       </div>

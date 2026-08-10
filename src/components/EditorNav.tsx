@@ -31,7 +31,7 @@ export default function EditorNav() {
           <button
             onClick={() => setOpen(!open)}
             className="text-text-muted hover:text-text md:hidden"
-            aria-label="Buka menu"
+            aria-label="Open menu"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>

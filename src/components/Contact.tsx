@@ -30,7 +30,7 @@ export default function Contact() {
       setEmail("");
       setMessage("");
 
-      // Tutup form otomatis setelah beberapa detik
+      // Automatically close form after a few seconds
       setTimeout(() => {
         setIsOpen(false);
         setStatus("idle");
@@ -65,7 +65,7 @@ export default function Contact() {
               <div className="flex flex-col gap-4 pb-4 max-w-lg">
                 <div className="flex flex-col gap-1">
                   <label htmlFor="name" className="font-mono text-xs text-text-muted">
-                    Nama
+                    Name
                   </label>
                   <input
                     id="name"
@@ -73,7 +73,7 @@ export default function Contact() {
                     required={isOpen}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="Nama Anda"
+                    placeholder="Your Name"
                     className="rounded-lg border border-border bg-bg px-4 py-2.5 text-text placeholder:text-text-muted/50 focus:border-accent-2 focus:outline-none transition font-mono text-sm"
                   />
                 </div>
@@ -102,7 +102,7 @@ export default function Contact() {
                     required={isOpen}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Tulis pesan Anda di sini..."
+                    placeholder="Write your message here..."
                     rows={4}
                     className="rounded-lg border border-border bg-bg px-4 py-2.5 text-text placeholder:text-text-muted/50 focus:border-accent-2 focus:outline-none transition font-mono text-sm resize-none"
                   />

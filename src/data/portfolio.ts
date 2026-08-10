@@ -390,13 +390,10 @@ export const experience = [
     role: "Software Engineer",
     company: "Infonet Global Tech",
     period: "2021 — Now",
-    description: "Description",
-  },
-  {
-    id: "exp-2",
-    role: "Intern",
-    company: "Telkom Indonesia",
-    period: "2019 - 2019",
-    description: "Description",
+    description: [
+      "Served as the primary developer (Flutter) across multiple client projects, independently owning end-to-end implementation — from architecture and technical decisions through to delivery — across production-ready Android and iOS applications.",
+      "Delivered mobile solutions across diverse business domains — including offline-first financial systems and real-time auction platforms — adapting architecture to each domain's unique data and connectivity requirements.",
+      "Translated business development needs into functional, client-ready prototypes — providing the technical foundation that enabled the sales team to secure enterprise partnerships."
+    ],
   },
 ];

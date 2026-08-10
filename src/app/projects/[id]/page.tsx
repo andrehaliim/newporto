@@ -22,12 +22,12 @@ export default function ProjectDetailPage({ params }: PageProps) {
   if (!project) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-bg font-mono text-text">
-        <p className="text-xl">Project tidak ditemukan</p>
+        <p className="text-xl">Project not found</p>
         <Link
           href="/"
           className="mt-4 inline-flex items-center gap-2 text-accent hover:underline"
         >
-          <ArrowLeft size={16} /> Kembali ke Beranda
+          <ArrowLeft size={16} /> Back to home
         </Link>
       </div>
     );
@@ -72,7 +72,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
             className="flex items-center gap-2 border-r border-border px-4 py-2.5 text-text-muted hover:text-text hover:bg-surface-2 md:border-b-0 md:border-r"
           >
             <ArrowLeft size={14} />
-            Kembali
+            Back
           </Link>
           <div className="flex items-center gap-2 border-r border-border bg-surface px-4 py-2.5 text-accent-2">
             <DartIcon size={14} />
@@ -188,7 +188,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-0.5 font-mono text-[11px] text-accent-2 hover:underline flex-shrink-0"
-                        title={`Buka pub.dev / dokumentasi ${comp.name}`}
+                        title={`Open pub.dev / documentation for ${comp.name}`}
                       >
                         Docs <LinkIcon size={10} />
                       </a>
