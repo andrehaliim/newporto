@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, Layers, Link as LinkIcon } from "lucide-react";
 import { projects } from "@/data/portfolio";
-import { GithubIcon, DartIcon } from "@/components/icons/BrandIcons";
+import { GithubIcon } from "@/components/icons/BrandIcons";
 import ThemeToggle from "@/components/ThemeToggle";
 import LiveDemoButton from "@/components/LiveDemoButton";
 
@@ -51,34 +51,32 @@ export default function ProjectDetailPage({ params }: PageProps) {
       <title>{`${project.title} — Project Detail`}</title>
       <meta name="description" content={project.description} />
 
-      <header className="sticky top-0 z-50 border-b border-border bg-bg/90 backdrop-blur">
-        {/* window chrome */}
-        <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-          <span className="h-2.5 w-2.5 rounded-full bg-accent-pink/70" />
-          <span className="h-2.5 w-2.5 rounded-full bg-accent/70" />
-          <span className="h-2.5 w-2.5 rounded-full bg-accent-2/70" />
-          <span className="ml-3 font-mono text-xs text-text-muted">
-            //project_detail
-          </span>
-          <div className="ml-auto">
-            <ThemeToggle />
+      <header className="sticky top-0 z-50 border-b border-border bg-bg/80 backdrop-blur-md transition-colors duration-200">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between">
+            {/* Logo / Brand */}
+            <Link
+              href="/"
+              className="flex items-center gap-1.5 font-sans text-lg font-semibold tracking-tight text-text hover:opacity-90"
+            >
+              <span>Andre Haliim</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            </Link>
+
+            {/* Navigation Actions */}
+            <div className="flex items-center gap-6">
+              <Link
+                href="/#projects"
+                className="flex items-center gap-2 font-sans text-sm font-medium text-text-muted transition-colors hover:text-text"
+              >
+                <ArrowLeft size={16} />
+                <span>Back to Home</span>
+              </Link>
+              <div className="h-4 w-px bg-border" />
+              <ThemeToggle />
+            </div>
           </div>
         </div>
-
-        {/* tab */}
-        <nav className="flex font-mono text-sm">
-          <Link
-            href="/#projects"
-            className="flex items-center gap-2 border-r border-border px-4 py-2.5 text-text-muted hover:text-text hover:bg-surface-2 md:border-b-0 md:border-r"
-          >
-            <ArrowLeft size={14} />
-            Back
-          </Link>
-          <div className="flex items-center gap-2 border-r border-border bg-surface px-4 py-2.5 text-accent-2">
-            <DartIcon size={14} />
-            {project.name}.dart
-          </div>
-        </nav>
       </header>
 
       <main className="mx-auto max-w-5xl px-6 py-12">
