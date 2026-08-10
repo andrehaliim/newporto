@@ -11,7 +11,7 @@ export default function ThemeToggle() {
     // Read initial theme on mount
     const savedTheme = localStorage.getItem("theme");
     const currentTheme = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
-    
+
     if (savedTheme === "light" || (!savedTheme && currentTheme === "light")) {
       setTheme("light");
       document.documentElement.setAttribute("data-theme", "light");
@@ -50,20 +50,18 @@ export default function ThemeToggle() {
       aria-label="Toggle theme"
     >
       <div
-        className={`absolute transition-all duration-500 ease-out transform ${
-          isLight 
-            ? "rotate-0 scale-100 opacity-100" 
+        className={`absolute transition-all duration-500 ease-out transform ${isLight
+            ? "rotate-0 scale-100 opacity-100"
             : "rotate-90 scale-0 opacity-0"
-        }`}
+          }`}
       >
         <Sun size={16} className="text-accent" />
       </div>
       <div
-        className={`absolute transition-all duration-500 ease-out transform ${
-          isLight 
-            ? "-rotate-90 scale-0 opacity-0" 
+        className={`absolute transition-all duration-500 ease-out transform ${isLight
+            ? "-rotate-90 scale-0 opacity-0"
             : "rotate-0 scale-100 opacity-100"
-        }`}
+          }`}
       >
         <Moon size={16} className="text-accent-2" />
       </div>

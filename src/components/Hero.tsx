@@ -10,9 +10,9 @@ const lines = [
     content: (
       <span>
         <span className="text-accent-pink">class</span>{" "}
-        <span className="text-accent">Developer</span>{" "}
+        <span className="text-text">Developer</span>{" "}
         <span className="text-accent-pink">extends</span>{" "}
-        <span className="text-accent">StatelessWidget</span> {"{"}
+        <span className="text-text font-medium">StatelessWidget</span> {"{"}
       </span>
     ),
   },
@@ -21,7 +21,7 @@ const lines = [
     content: (
       <span className="pl-6 block">
         <span className="text-accent-pink">final</span> name ={" "}
-        <span className="text-accent">&quot;{profile.name}&quot;</span>;
+        <span className="text-text-muted">&quot;{profile.name}&quot;</span>;
       </span>
     ),
   },
@@ -30,7 +30,7 @@ const lines = [
     content: (
       <span className="pl-6 block">
         <span className="text-accent-pink">final</span> role ={" "}
-        <span className="text-accent">&quot;{profile.role}&quot;</span>;
+        <span className="text-text-muted">&quot;{profile.role}&quot;</span>;
       </span>
     ),
   },
@@ -39,7 +39,7 @@ const lines = [
     content: (
       <span className="pl-6 block">
         <span className="text-accent-pink">final</span> location ={" "}
-        <span className="text-accent">&quot;{profile.location}&quot;</span>;
+        <span className="text-text-muted">&quot;{profile.location}&quot;</span>;
       </span>
     ),
   },
@@ -48,7 +48,7 @@ const lines = [
     content: (
       <span className="pl-6 block">
         <span className="text-accent-pink">final</span> status ={" "}
-        <span className="text-accent">&quot;open to work&quot;</span>;
+        <span className="text-text-muted">&quot;open to work&quot;</span>;
       </span>
     ),
   },
@@ -59,18 +59,18 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="mx-auto flex max-w-5xl flex-col-reverse gap-10 px-6 py-20 md:flex-row md:items-center md:py-28"
+      className="mx-auto flex max-w-5xl flex-col-reverse gap-12 px-6 py-24 md:flex-row md:items-center"
     >
       <div className="flex-1">
-        <div className="overflow-hidden rounded-xl border border-border bg-surface shadow-2xl shadow-black/40">
-          <div className="flex items-center gap-2 border-b border-border bg-surface-2 px-4 py-2 font-mono text-xs text-text-muted">
-            <span className="h-2 w-2 rounded-full bg-accent-pink/70" />
-            <span className="h-2 w-2 rounded-full bg-accent/70" />
-            <span className="h-2 w-2 rounded-full bg-accent-2/70" />
-            <span className="ml-2">portfolio.dart</span>
+        <div className="overflow-hidden rounded-[12px] border border-border bg-surface-soft">
+          <div className="flex items-center gap-2 border-b border-border bg-surface-strong/30 px-4 py-2 font-mono text-[11px] text-text-muted">
+            <span className="h-1.5 w-1.5 rounded-full bg-sig-coral/60" />
+            <span className="h-1.5 w-1.5 rounded-full bg-sig-yellow/60" />
+            <span className="h-1.5 w-1.5 rounded-full bg-sig-mint/60" />
+            <span className="ml-2 font-medium">portfolio.dart</span>
           </div>
-          <div className="flex px-2 py-5 font-mono text-sm leading-7 sm:text-base">
-            <div className="select-none pr-4 text-right text-text-muted/60">
+          <div className="flex px-4 py-5 font-mono text-[13px] leading-6">
+            <div className="select-none pr-4 text-right text-text-muted/40">
               {lines.map((l) => (
                 <div key={l.n}>{l.n}</div>
               ))}
@@ -83,23 +83,25 @@ export default function Hero() {
           </div>
         </div>
 
-        <h1 className="mt-8 font-mono text-3xl font-bold leading-tight sm:text-4xl">
+        <h1 className="mt-8 font-sans text-[40px] font-normal leading-[1.2] tracking-tight text-text">
           Hello, I'm {profile.name.split(" ")[0]}.{" "}
-          <span className="text-accent-2">{profile.role}.</span>
+          <span className="text-accent-pink font-medium">{profile.role}.</span>
         </h1>
-        <p className="mt-4 max-w-xl text-text-muted">{profile.tagline}</p>
+        <p className="mt-4 max-w-xl text-[14px] leading-relaxed text-text-muted">
+          {profile.tagline}
+        </p>
 
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div className="mt-8 flex flex-wrap gap-4">
           <a
             href="#projects"
-            className="inline-flex items-center gap-2 rounded-lg bg-accent-2 px-5 py-2.5 font-mono text-sm font-semibold text-bg transition hover:brightness-110"
+            className="inline-flex items-center gap-2 rounded-[12px] bg-accent px-6 py-3.5 font-sans text-[16px] font-medium text-white transition hover:bg-accent/90"
           >
             See Projects <ArrowDown size={16} />
           </a>
           <a
             href={profile.cvFile}
             download
-            className="inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 font-mono text-sm font-semibold text-text transition hover:border-accent-2 hover:text-accent-2"
+            className="inline-flex items-center gap-2 rounded-[12px] border border-border bg-canvas px-6 py-3.5 font-sans text-[16px] font-medium text-text transition hover:bg-surface-soft"
           >
             Download CV <Download size={16} />
           </a>
@@ -107,12 +109,13 @@ export default function Hero() {
       </div>
 
       <div className="mx-auto md:mx-0">
-        <div className="relative h-40 w-40 overflow-hidden rounded-2xl border border-border bg-surface sm:h-52 sm:w-52">
+        <div className="relative h-44 w-44 overflow-hidden rounded-[12px] border border-border bg-surface-soft sm:h-56 sm:w-56">
           <Image
             src={profile.photo}
             alt={profile.name}
             fill
-            sizes="208px"
+            priority
+            sizes="(max-width: 768px) 176px, 224px"
             className="object-cover"
           />
         </div>
