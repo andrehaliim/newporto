@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Mail, X } from "lucide-react";
 import { profile } from "@/data/portfolio";
 import SectionLabel from "./SectionLabel";
-import { GithubIcon, LinkedinIcon, TwitterIcon } from "./icons/BrandIcons";
+import { GithubIcon, LinkedinIcon, InstagramIcon, SpotifyIcon } from "./icons/BrandIcons";
 
 export default function Contact() {
   const [isOpen, setIsOpen] = useState(false);
@@ -170,12 +170,20 @@ export default function Contact() {
                       <LinkedinIcon size={16} /> LinkedIn
                     </a>
                     <a
-                      href={profile.socials.twitter}
+                      href={profile.socials.instagram}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full sm:w-auto inline-flex justify-center items-center gap-2 rounded-[12px] border border-white/20 px-6 py-3.5 text-white/70 font-sans text-[16px] font-medium transition hover:border-white/50 hover:text-white"
                     >
-                      <TwitterIcon size={16} /> Twitter
+                      <InstagramIcon size={16} /> Instagram
+                    </a>
+                    <a
+                      href={profile.socials.spotify}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full sm:w-auto inline-flex justify-center items-center gap-2 rounded-[12px] border border-white/20 px-6 py-3.5 text-white/70 font-sans text-[16px] font-medium transition hover:border-white/50 hover:text-white"
+                    >
+                      <SpotifyIcon size={16} /> Spotify
                     </a>
                   </>
                 )}

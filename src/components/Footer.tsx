@@ -7,32 +7,6 @@ export default function Footer() {
         <p className="font-sans text-[14px] text-text-muted">
           © {new Date().getFullYear()} {profile.name}. Built with Next.js.
         </p>
-        <div className="flex items-center gap-6">
-          <a
-            href={profile.socials.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-sans text-[14px] text-text-muted hover:text-text transition-colors"
-          >
-            GitHub
-          </a>
-          <a
-            href={profile.socials.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-sans text-[14px] text-text-muted hover:text-text transition-colors"
-          >
-            LinkedIn
-          </a>
-          <a
-            href={profile.socials.twitter}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-sans text-[14px] text-text-muted hover:text-text transition-colors"
-          >
-            Twitter
-          </a>
-        </div>
       </div>
     </footer>
   );

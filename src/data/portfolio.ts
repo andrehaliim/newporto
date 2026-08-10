@@ -15,7 +15,8 @@ export const profile = {
   socials: {
     github: "https://github.com/andrehaliim",
     linkedin: "https://linkedin.com/in/andrehaliim",
-    twitter: "https://twitter.com/andrehaliim",
+    instagram: "https://instagram.com/andrehaliim",
+    spotify: "https://open.spotify.com/user/andrehaliim",
   },
   description: {
     paragraph1: "I build robust and scalable mobile applications using Flutter. With a strong foundation in object-oriented programming and software architecture, I specialize in creating seamless user experiences with a focus on performance, clean code, and maintainability.",
