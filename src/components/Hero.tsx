@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ArrowDown, Download } from "lucide-react";
 import { profile } from "@/data/portfolio";
 
@@ -59,7 +58,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="mx-auto flex max-w-5xl flex-col-reverse gap-12 px-6 py-24 md:flex-row md:items-center"
+      className="mx-auto flex max-w-5xl flex-col-reverse gap-12 px-6 py-24 md:flex-row md:items-stretch"
     >
       <div className="flex-1">
         <div className="overflow-hidden rounded-[12px] border border-border bg-surface-soft">
@@ -108,18 +107,22 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="mx-auto md:mx-0">
-        <div className="relative h-44 w-44 overflow-hidden rounded-[12px] border border-border bg-surface-soft sm:h-56 sm:w-56">
-          <Image
-            src={profile.photo}
-            alt={profile.name}
-            fill
-            priority
-            sizes="(max-width: 768px) 176px, 224px"
-            className="object-cover"
-          />
-        </div>
-      </div>
+      <div className="w-full shrink-0 md:w-75 md:-my-24">
+    <div className="h-full w-full overflow-hidden rounded-[12px]">
+      <picture className="block h-full w-full">
+        <source
+          media="(max-width: 767px)"
+          srcSet={profile.photo2}
+        />
+
+        <img
+          src={profile.photo}
+          alt={profile.name}
+          className="h-full w-full object-cover object-[100%_top]"
+        />
+      </picture>
+    </div>
+  </div>
     </section>
   );
 }

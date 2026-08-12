@@ -10,7 +10,8 @@ export const profile = {
     "Turning ideas into working software, one clean line of code at a time.",
   location: "Bandung, Indonesia",
   email: "Email",
-  photo: "/profile.jpeg",
+  photo: "/photo.svg",
+  photo2: "/photo2.jpg",
   cvFile: "/AndreHaliim_CV.pdf",
   socials: {
     github: "https://github.com/andrehaliim",
