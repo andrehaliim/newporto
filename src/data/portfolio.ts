@@ -12,7 +12,7 @@ export const profile = {
   email: "Email",
   photo: "/photo.svg",
   photo2: "/photo2.jpg",
-  cvFile: "/AndreHaliim_CV.pdf",
+  cvFile: "/Andre_Haliim_CV.pdf",
   socials: {
     github: "https://github.com/andrehaliim",
     linkedin: "https://linkedin.com/in/andrehaliim",
