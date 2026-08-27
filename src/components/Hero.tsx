@@ -2,7 +2,7 @@ import { ArrowDown, Download } from "lucide-react";
 import { profile } from "@/data/portfolio";
 
 const lines = [
-  { n: 1, content: <span className="text-text-muted">// developer_profile.dart</span> },
+  { n: 1, content: <span className="text-text-muted">// developer_profile</span> },
   { n: 2, content: <span></span> },
   {
     n: 3,
@@ -66,7 +66,7 @@ export default function Hero() {
             <span className="h-1.5 w-1.5 rounded-full bg-sig-coral/60" />
             <span className="h-1.5 w-1.5 rounded-full bg-sig-yellow/60" />
             <span className="h-1.5 w-1.5 rounded-full bg-sig-mint/60" />
-            <span className="ml-2 font-medium">portfolio.dart</span>
+            <span className="ml-2 font-medium">portfolio</span>
           </div>
           <div className="flex px-4 py-5 font-mono text-[13px] leading-6">
             <div className="select-none pr-4 text-right text-text-muted/40">
@@ -98,31 +98,32 @@ export default function Hero() {
             See Projects <ArrowDown size={16} />
           </a>
           <a
-            href={profile.cvFile}
-            download
+            href={profile.cvURL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-[12px] border border-border bg-canvas px-6 py-3.5 font-sans text-[16px] font-medium text-text transition hover:bg-surface-soft"
           >
-            Download CV <Download size={16} />
+            Resume <Download size={16} />
           </a>
         </div>
       </div>
 
       <div className="w-full shrink-0 md:w-75 md:-my-24">
-    <div className="h-full w-full overflow-hidden rounded-[12px]">
-      <picture className="block h-full w-full">
-        <source
-          media="(max-width: 767px)"
-          srcSet={profile.photo2}
-        />
+        <div className="h-full w-full overflow-hidden rounded-[12px]">
+          <picture className="block h-full w-full">
+            <source
+              media="(max-width: 767px)"
+              srcSet={profile.photo2}
+            />
 
-        <img
-          src={profile.photo}
-          alt={profile.name}
-          className="h-full w-full object-cover object-[100%_top]"
-        />
-      </picture>
-    </div>
-  </div>
+            <img
+              src={profile.photo}
+              alt={profile.name}
+              className="h-full w-full object-cover object-[100%_top]"
+            />
+          </picture>
+        </div>
+      </div>
     </section>
   );
 }

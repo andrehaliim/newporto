@@ -7,12 +7,12 @@ export const profile = {
   name: "Andre Haliim",
   role: "Software Engineer",
   tagline:
-    "Turning ideas into working software, one clean line of code at a time.",
+    "From idea to production, I build, lead, and ship.",
   location: "Bandung, Indonesia",
   email: "Email",
   photo: "/photo.svg",
   photo2: "/photo2.jpg",
-  cvFile: "/Andre_Haliim_CV.pdf",
+  cvURL: "https://docs.google.com/document/d/1Yhk5RqckFqxK6kJyHU0w1hS2Bb2ffZL2nAXczlpAd3w/export?format=pdf",
   socials: {
     github: "https://github.com/andrehaliim",
     linkedin: "https://linkedin.com/in/andrehaliim",
@@ -20,15 +20,58 @@ export const profile = {
     spotify: "https://open.spotify.com/user/andrehaliim",
   },
   description: {
-    paragraph1: "I build robust and scalable mobile applications using Flutter. With a strong foundation in object-oriented programming and software architecture, I specialize in creating seamless user experiences with a focus on performance, clean code, and maintainability.",
-    paragraph2: "My technical approach centers on understanding the core business requirements and translating them into clean, efficient code. I prioritize writing tests, maintaining modular code structures, and implementing best practices to ensure long-term project health. I am passionate about continuously improving my skills and staying updated with the latest trends in mobile development.",
-    paragraph3: "I am seeking opportunities where I can leverage my technical expertise to solve complex problems and contribute to innovative products. I am a collaborative team player who thrives in fast-paced environments and is committed to delivering high-quality results.",
-  }
+    paragraph1:
+      "I’m a Software Engineer with 5+ years of experience building production-ready mobile applications, specializing in Flutter and Dart. I enjoy turning ideas and business requirements into reliable products that are designed to work in the real world, not just in a demo.",
+    paragraph2:
+      "At Infonet Global Tech, I work as a Mobile Development Tech Lead and primary Flutter developer, taking ownership of projects from architecture and technical decisions through deployment. I’ve worked across different business domains, including gold trading, automotive auctions, and field inspection, where reliability, data integrity, and performance are essential to the business.",
+    paragraph3:
+      "My engineering background started with native Android development using Kotlin before moving into Flutter. That experience gave me a strong understanding of mobile platforms and helps me work beyond the Flutter layer when native solutions are needed.",
+    paragraph4:
+      "Beyond client projects, I build and maintain Deenly, an open-source Flutter application where I explore mobile architecture, offline-first data, background processing, home screen widgets, and other ideas without the constraints of a client project.",
+    paragraph5:
+      "I’m also expanding my skills beyond mobile development with Python and FastAPI, with the goal of becoming a more well-rounded engineer capable of building products across the stack.",
+    paragraph6:
+      "From idea to production, I build, lead, and ship.",
+  },
 };
 
-export const skills = [
-  "Flutter",
-];
+export const skills = {
+  languages: [
+    "Dart",
+    "Kotlin",
+    "Python",
+    "JavaScript",
+  ],
+  frameworks: [
+    "Flutter",
+    "FastAPI",
+    "Node.js",
+  ],
+  databases: [
+    "SQL",
+    "Firebase",
+    "ObjectBox",
+    "SQLite",
+  ],
+  tools: [
+    "Git",
+    "GitLab",
+    "Android Studio",
+    "VS Code",
+    "Postman",
+    "ADB",
+    "Vercel",
+  ],
+  practices: [
+    "REST API Integration",
+    "CI/CD",
+    "Provider (State Management)",
+  ],
+  aiTools: [
+    "Claude Code",
+    "Antigravity",
+  ],
+};
 
 export const projects = [
   {

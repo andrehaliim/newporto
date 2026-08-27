@@ -17,7 +17,7 @@ const cardAccentStyles = [
 export default function Projects() {
   return (
     <section id="projects" className="mx-auto max-w-5xl px-6 py-24 border-t border-border">
-      <SectionLabel index="02" name="projects.dart" />
+      <SectionLabel index="02" name="projects" />
       <h2 className="mt-4 font-sans text-[32px] font-normal leading-[1.2] text-text">
         Main Projects
       </h2>
@@ -37,7 +37,7 @@ export default function Projects() {
                 <span className="h-1.5 w-1.5 rounded-full bg-sig-coral/60" />
                 <span className="h-1.5 w-1.5 rounded-full bg-sig-yellow/60" />
                 <span className="h-1.5 w-1.5 rounded-full bg-sig-mint/60" />
-                <span className="ml-2 font-medium">{project.name}.dart</span>
+                <span className="ml-2 font-medium">{project.name}</span>
                 {project.isPersonal && (
                   <span className="ml-auto rounded-sm border border-sig-coral/30 bg-sig-coral/10 px-1.5 py-0.5 text-[10px] text-sig-coral font-semibold uppercase tracking-wider">
                     Personal

@@ -5,17 +5,18 @@ import SectionLabel from "./SectionLabel";
 export default function Experience() {
   return (
     <section id="experience" className="mx-auto max-w-5xl px-6 py-24 border-t border-border">
-      <SectionLabel index="03" name="experience.dart" />
+      <SectionLabel index="03" name="experience" />
       <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
         <h2 className="font-sans text-[32px] font-normal leading-[1.2] text-text">
           Professional Experience
         </h2>
         <a
-          href={profile.cvFile}
-          download
+          href={profile.cvURL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-2 rounded-[12px] border border-border bg-canvas px-5 py-3 font-sans text-[16px] font-medium text-text transition hover:bg-surface-soft"
         >
-          Download CV <Download size={15} />
+          Resume <Download size={15} />
         </a>
       </div>
 

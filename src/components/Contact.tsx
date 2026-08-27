@@ -45,7 +45,7 @@ export default function Contact() {
       {/* Signature dark CTA band */}
       <div className="bg-surface-dark text-white px-6 py-24">
         <div className="mx-auto max-w-5xl">
-          <SectionLabel index="04" name="contact.dart" light={true} />
+          <SectionLabel index="04" name="contact" light={true} />
 
           <div className="mt-8 rounded-[12px] border border-white/10 bg-white/5 p-8 sm:p-12">
             <h2 className="font-sans text-[32px] font-normal leading-[1.2]" style={{ color: '#ffffff' }}>
@@ -58,11 +58,10 @@ export default function Contact() {
 
             <form onSubmit={handleSubmit} className="mt-8">
               <div
-                className={`grid transition-all duration-500 ease-in-out ${
-                  isOpen
+                className={`grid transition-all duration-500 ease-in-out ${isOpen
                     ? "grid-rows-[1fr] opacity-100 mb-6 translate-y-0"
                     : "grid-rows-[0fr] opacity-0 pointer-events-none -translate-y-4"
-                }`}
+                  }`}
               >
                 <div className="overflow-hidden">
                   <div className="flex flex-col gap-4 pb-4 max-w-lg">
@@ -130,8 +129,8 @@ export default function Contact() {
                   {!isOpen
                     ? profile.email
                     : status === "sending"
-                    ? "Sending..."
-                    : "Send"}
+                      ? "Sending..."
+                      : "Send"}
                 </button>
 
                 {isOpen && (
