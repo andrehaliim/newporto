@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import SectionLabel from "./SectionLabel";
 import { profile, skills } from "@/data/portfolio";
 
@@ -13,7 +13,7 @@ const CATEGORY_LABELS: Record<keyof typeof skills, string> = {
   aiTools: "ai_tools",
 };
 
-const container = {
+const container: Variants = {
   hidden: {},
   show: {
     transition: {
@@ -22,7 +22,7 @@ const container = {
   },
 };
 
-const badgeVariant = {
+const badgeVariant: Variants = {
   hidden: { opacity: 0, y: 8, scale: 0.95 },
   show: {
     opacity: 1,
