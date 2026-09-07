@@ -38,20 +38,19 @@ export const profile = {
 export const skills = {
   languages: [
     "Dart",
-    "Kotlin",
     "Python",
     "JavaScript",
   ],
   frameworks: [
     "Flutter",
     "FastAPI",
-    "Node.js",
+    "Next.js",
   ],
   databases: [
-    "SQL",
-    "Firebase",
-    "ObjectBox",
     "SQLite",
+    "ObjectBox",
+    "PostgreSQL",
+    "Firebase",
   ],
   tools: [
     "Git",
@@ -65,7 +64,8 @@ export const skills = {
   practices: [
     "REST API Integration",
     "CI/CD",
-    "Provider (State Management)",
+    "Riverpod",
+    "Provider"
   ],
   aiTools: [
     "Claude Code",
