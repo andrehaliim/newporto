@@ -520,6 +520,7 @@ export const projects = [
     ],
     demoUrl: "/api/download/andrehaliim/laundryan",
     repoUrl: "https://github.com/andrehaliim/laundryan",
+    privacyUrl: "/projects/laundryan/privacy",
     featured: false,
     isPersonal: true
   },

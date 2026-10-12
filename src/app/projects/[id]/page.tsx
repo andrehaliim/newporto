@@ -3,7 +3,12 @@
 import { use, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Layers, Link as LinkIcon } from "lucide-react";
+import {
+  ArrowLeft,
+  Layers,
+  Link as LinkIcon,
+  ShieldCheck,
+} from "lucide-react";
 import { projects } from "@/data/portfolio";
 import { GithubIcon } from "@/components/icons/BrandIcons";
 import LiveDemoButton from "@/components/LiveDemoButton";
@@ -111,6 +116,15 @@ export default function ProjectDetailPage({ params }: PageProps) {
                   </a>
                 )}
               </div>
+            )}
+
+            {project.privacyUrl && (
+              <Link
+                href={project.privacyUrl}
+                className="mt-6 inline-flex items-center gap-1.5 font-sans text-[14px] text-accent-2 hover:underline"
+              >
+                <ShieldCheck size={16} /> Privacy Policy
+              </Link>
             )}
           </div>
         </div>
