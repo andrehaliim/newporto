@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 type Asset = { name?: string; browser_download_url?: string };
 
-// Redirects to the latest GitHub release asset (prefers .apk).
+// Redirects to the latest GitHub release asset (prefers arm64-v8a .apk).
 export async function GET(
   _req: Request,
   { params }: { params: Promise<{ owner: string; repo: string }> }
@@ -23,7 +23,9 @@ export async function GET(
 
     const data: { assets?: Asset[] } = await res.json();
     const assets = data.assets ?? [];
-    const asset = assets.find((a) => a.name?.endsWith('.apk')) ?? assets[0];
+    const apks = assets.filter((a) => a.name?.endsWith('.apk'));
+    // Prefer arm64-v8a for split-per-abi builds (covers most modern phones)
+    const asset = apks.find((a) => a.name?.includes('arm64-v8a')) ?? apks[0] ?? assets[0];
 
     return NextResponse.redirect(asset?.browser_download_url ?? releasePage);
   } catch {

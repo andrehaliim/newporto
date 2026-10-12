@@ -518,8 +518,8 @@ export const projects = [
       "image_picker",
       "url_launcher"
     ],
-    demoUrl: null,
-    repoUrl: null,
+    demoUrl: "/api/download/andrehaliim/laundryan",
+    repoUrl: "https://github.com/andrehaliim/laundryan",
     featured: false,
     isPersonal: true
   },
