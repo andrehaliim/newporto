@@ -14,7 +14,7 @@ interface PageProps {
 
 export default function ProjectDetailPage({ params }: PageProps) {
   const resolvedParams = use(params);
-  const project = projects.find((p) => p.id === resolvedParams.id);
+  const project = projects.find((p) => p.name === resolvedParams.id);
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 

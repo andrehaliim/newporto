@@ -31,7 +31,7 @@ export default function Projects() {
             key={project.id}
             className="group flex flex-col overflow-hidden rounded-[10px] border border-border bg-canvas transition-shadow hover:shadow-sm"
           >
-            <Link href={`/projects/${project.id}`} className="block">
+            <Link href={`/projects/${project.name}`} className="block">
               {/* Card header bar */}
               <div className="flex items-center gap-2 border-b border-border bg-surface-soft px-4 py-2.5 font-mono text-[11px] text-text-muted">
                 <span className="h-1.5 w-1.5 rounded-full bg-sig-coral/60" />
@@ -57,7 +57,7 @@ export default function Projects() {
             </Link>
 
             <div className="flex flex-1 flex-col p-5">
-              <Link href={`/projects/${project.id}`} className="block group/title">
+              <Link href={`/projects/${project.name}`} className="block group/title">
                 <h3 className="font-sans text-[18px] font-medium leading-[1.4] text-text group-hover/title:text-accent-2 transition-colors">
                   {project.title}
                 </h3>
@@ -79,7 +79,7 @@ export default function Projects() {
 
               <div className="mt-auto pt-5 flex items-center justify-between text-[14px] border-t border-border/40">
                 <Link
-                  href={`/projects/${project.id}`}
+                  href={`/projects/${project.name}`}
                   className="inline-flex items-center gap-1.5 font-sans font-medium text-text-muted hover:text-text transition-colors"
                 >
                   <Info size={14} /> Detail

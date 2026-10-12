@@ -427,6 +427,102 @@ export const projects = [
     featured: false,
     isPersonal: true
   },
+  {
+    id: "proj-5",
+    name: "laundryan",
+    title: "Laundryan — Laundry Tracker App",
+    description:
+      "A personal laundry tracker that catalogs your wardrobe with photos, logs each laundry drop-off as a session, and checks every piece back in on pickup. Lost or swapped items get flagged right away, so nothing goes missing without you knowing.",
+    overview: [
+      "Laundryan is a personal project that started with a common frustration: sending clothes to a laundry service and only realizing days later that a shirt or a pair of socks never came back. Built independently with Flutter, it turns your wardrobe into a photo catalog and records each laundry trip as a session: which items went out, where, and when they should be ready. On pickup, a checklist walks you through verifying every piece, marking it as returned, lost or swapped. If anything is missing, the app writes a WhatsApp message to the laundry for you, listing exactly what didn’t come back. Everything is stored offline in a relational SQLite database, and a timezone-aware reminder lets you know before your laundry is ready."
+    ],
+    image: "/projects/laundryan/cover.png",
+    screenshots: "/projects/laundryan",
+    screenshotCount: 6,
+    screenshotDescription: [
+      "Active Sessions",
+      "Session Detail",
+      "Pickup Verification Checklist",
+      "Session Archive & Lost Item Tracking",
+      "Wardrobe Catalog",
+      "Dark Mode"
+    ],
+    descriptionPoints: [
+      "Wardrobe Catalog — Add clothes with a photo (camera or gallery), category, quantity and notes, then search and filter them by name or category.",
+      "Laundry Sessions — Each drop-off becomes a session with the laundry’s name, address, WhatsApp number, drop-off date and estimated ready time. A live status moves on its own from Dropped → Washing → Ready for Pickup → Verified.",
+      "Pickup Verification Checklist — Check items back in one by one, enter partial quantities, and mark pieces as Returned, Lost or Swapped. The wardrobe updates its available stock automatically.",
+      "Lost Item Tracking — Unresolved items stay flagged in history until you mark them Found or Permanently lost, so your wardrobe count stays accurate.",
+      "WhatsApp & Call Shortcuts — One tap opens WhatsApp with a pre-written message listing the missing items, or calls the laundry directly.",
+      "Ready Reminders — An optional notification fires 2 hours before the estimated ready time, scheduled against the device’s local timezone. If notifications are blocked, the app says so and links to system settings.",
+      "Custom Categories — Built-in categories (T-shirt, Shirt, Outerwear, Pants, Socks and more), plus your own categories with custom icons.",
+      "Multi Language Support — Full EN/ID localization using Flutter’s ARB-based system, with plural-aware strings.",
+      "Dark Mode — A soft, theme-aware UI with a matching native splash screen for both light and dark themes."
+    ],
+    componentsUsed: [
+      {
+        name: "drift",
+        type: "Reactive SQLite Database (Type-safe ORM)",
+        url: "https://pub.dev/packages/drift"
+      },
+      {
+        name: "provider",
+        type: "State Management",
+        url: "https://pub.dev/packages/provider"
+      },
+      {
+        name: "flutter_local_notifications",
+        type: "Scheduled Reminder Notifications",
+        url: "https://pub.dev/packages/flutter_local_notifications"
+      },
+      {
+        name: "timezone",
+        type: "Timezone-aware Scheduling",
+        url: "https://pub.dev/packages/timezone"
+      },
+      {
+        name: "flutter_timezone",
+        type: "Device Timezone Detection",
+        url: "https://pub.dev/packages/flutter_timezone"
+      },
+      {
+        name: "image_picker",
+        type: "Camera & Gallery Photo Capture",
+        url: "https://pub.dev/packages/image_picker"
+      },
+      {
+        name: "path_provider",
+        type: "Local Photo Storage",
+        url: "https://pub.dev/packages/path_provider"
+      },
+      {
+        name: "url_launcher",
+        type: "WhatsApp & Phone Call Integration",
+        url: "https://pub.dev/packages/url_launcher"
+      },
+      {
+        name: "shared_preferences",
+        type: "Persistent User Settings",
+        url: "https://pub.dev/packages/shared_preferences"
+      },
+      {
+        name: "hugeicons",
+        type: "Icon Library",
+        url: "https://pub.dev/packages/hugeicons"
+      }
+    ],
+    tech: [
+      "Flutter",
+      "Drift (SQLite)",
+      "Provider",
+      "flutter_local_notifications",
+      "image_picker",
+      "url_launcher"
+    ],
+    demoUrl: null,
+    repoUrl: null,
+    featured: false,
+    isPersonal: true
+  },
 ];
 
 export const experience = [
