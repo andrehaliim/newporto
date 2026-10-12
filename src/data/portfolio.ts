@@ -422,7 +422,7 @@ export const projects = [
       "home_widget",
       "flutter_compass"
     ],
-    demoUrl: "https://api.github.com/repos/andrehaliim/deenly/releases/latest",
+    demoUrl: "/api/download/andrehaliim/deenly",
     repoUrl: "https://github.com/andrehaliim/deenly",
     featured: false,
     isPersonal: true
