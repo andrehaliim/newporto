@@ -424,6 +424,7 @@ export const projects = [
     ],
     demoUrl: "/api/download/andrehaliim/deenly",
     repoUrl: "https://github.com/andrehaliim/deenly",
+    privacyUrl: "/projects/deenly/privacy",
     featured: false,
     isPersonal: true
   },
