@@ -6,10 +6,10 @@
     "nisab_decree": { "number": 15, "year": 2026 },
     "fitrah_per_person": 50000,
     "fitrah_decree": { "number": 14, "year": 2026 },
+    "fidyah_per_day": 65000,
     "gold_price_per_gram": 2361634,
     "silver_price_per_gram": 31143,
     "price_updated_at": "2026-10-29"
   },
-  "hijri_month_starts": {},
-  "fidyah_per_day": 65000
+  "hijri_month_starts": {}
 }
