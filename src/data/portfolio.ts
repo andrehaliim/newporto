@@ -77,6 +77,8 @@ export const projects = [
   {
     id: "proj-1",
     name: "gts",
+    // Accent tone sampled from the app UI, used for icon tiles on the detail page
+    tone: "#2b7fd4",
     title: "Gold Trading & Sales App",
     description: "An offline-first mobile app for recording gold trading transactions across a nationwide sales network.",
     overview: [
@@ -158,7 +160,7 @@ export const projects = [
         url: "https://pub.dev/packages/internet_connection_checker"
       }
     ],
-    tech: ["Flutter", "ObjectBox", "Firebase", "Dio", "Provider"],
+    tech: ["Flutter", "Dart", "ObjectBox", "Firebase", "REST API", "Bluetooth"],
     demoUrl: null,
     repoUrl: null,
     featured: true,
@@ -167,6 +169,8 @@ export const projects = [
   {
     id: "proj-2",
     name: "afc",
+    // Accent tone sampled from the app UI, used for icon tiles on the detail page
+    tone: "#3b5bdb",
     title: "AutoFleet Capital",
     description:
       "A mobile front-end for an international car auction platform sourcing vehicles from Japan and New Zealand.",
@@ -249,7 +253,7 @@ export const projects = [
         url: "https://pub.dev/packages/provider"
       }
     ],
-    tech: ["Flutter", "Dio", "Provider", "Flutter ScreenUtil", "Flutter Image Compress"],
+    tech: ["Flutter", "Dart", "REST API"],
     demoUrl: null,
     repoUrl: null,
     featured: true,
@@ -258,6 +262,8 @@ export const projects = [
   {
     id: "proj-3",
     name: "fika",
+    // Accent tone sampled from the app UI, used for icon tiles on the detail page
+    tone: "#2f6f6b",
     title: "Field Inspection App",
     description:
       "A customizable field inspection platform with configurable digital questionnaires.",
@@ -325,7 +331,7 @@ export const projects = [
         url: "https://pub.dev/packages/geolocator"
       },
     ],
-    tech: ["Flutter", "Geolocator"],
+    tech: ["Flutter", "Dart", "Geolocation"],
     demoUrl: null,
     repoUrl: null,
     featured: false,
@@ -334,33 +340,58 @@ export const projects = [
   {
     id: "proj-4",
     name: "deenly",
+    // Accent tone sampled from the app UI, used for icon tiles on the detail page
+    tone: "#0f5c4a",
     title: "Deenly — Islamic Companion App",
     description:
-      "A Muslim companion app that combines location-aware accurate prayer times (Al Adhan API), adhan notifications, a home screen widget, and real-time Qibla direction, backed by background sync and EN/ID localization.",
+      "An Islamic companion app that brings location-based prayer times with a prayer tracker, the Quran with audio recitation, Qibla direction, dhikr and duas, a Hijri calendar and zakat calculators together in one app, with a home screen widget, reliable reminders and EN/ID localization.",
     overview: [
-      "Deenly is a personal project born out of a simple need: staying connected to daily prayer times without constantly checking a separate app. Built independently with Flutter, it's designed as an all-in-one Islamic companion that lives quietly in the background — syncing accurate, location-based prayer schedules, sending timely adhan reminders, and even surfacing prayer times right on the home screen. It's open-source, actively maintained, and reflects a deep dive into native platform integrations (background tasks, home screen widgets, device sensors) that go beyond typical CRUD app development."
+      "Deenly started from a simple frustration: switching between separate apps every day for prayer times, the Quran and dhikr. So it was built as one calm app that brings daily worship together in one place.",
+      "The real challenge wasn't the screens, it was staying reliable while the app is closed. Prayer times are cached on the device so they work offline, background jobs keep the schedule and the home screen widget up to date without opening the app, and reminders still arrive on time. Values like zakat thresholds come from a remote config, so they can change without shipping an update.",
+      "Designed, built and maintained solo with Flutter, Deenly is open-source under the MIT license and released as an Android app through GitHub Releases."
     ],
     image: "/projects/deenly/logo.png",
-    screenshots: "/projects/deenly",
-    screenshotCount: 9,
+    // Store-style preview screenshots (temporary, deenly only)
+    screenshotStyle: "store",
+    screenshots: [
+      "/projects/deenly/store/01_home.png",
+      "/projects/deenly/store/02_quran.png",
+      "/projects/deenly/store/03_prayers.png",
+      "/projects/deenly/store/04_qibla.png",
+      "/projects/deenly/store/05_dzikir.png",
+      "/projects/deenly/store/06_calendar.png",
+      "/projects/deenly/store/07_zakat.png",
+      "/projects/deenly/store/08_tasbih.png",
+      "/projects/deenly/store/09_doa.png",
+      "/projects/deenly/store/10_mosque.png",
+      "/projects/deenly/store/11_home_dark.png",
+      "/projects/deenly/store/12_widget.png"
+    ],
     screenshotDescription: [
-      "Home Page",
-      "Prayer Times",
-      "Qibla Direction",
-      "Quran Surah List",
-      "Quran Surah Detail",
-      "Nearby Mosque Page",
-      "Tasbeh Digital Page",
-      "Settings Page",
-      "Homescreen Prayer Widget"
+      "Your worship companion",
+      "Read the Quran your way",
+      "Track your daily prayers",
+      "Find the Qibla anywhere",
+      "Morning & evening dhikr",
+      "Complete Hijri calendar",
+      "Calculate zakat with ease",
+      "Digital tasbih",
+      "Daily duas",
+      "Find nearby mosques",
+      "Easy on the eyes",
+      "Prayer times at a glance"
     ],
     descriptionPoints: [
-      "Location Aware Prayer Times — Fetches accurate daily and yearly prayer schedules from the Al Adhan API based on the user's GPS location, with results cached locally via SQLite for offline access.",
-      "Custom Adhan Notifications — Delivers scheduled prayer notifications with custom adhan sounds and dedicated Android notification channels, fully adjustable by the user.",
-      "Home Screen Widget — A native home screen widget powered by WorkManager, running scheduled background syncs to keep prayer times up to date without opening the app.",
-      "Qibla Direction Finder — Uses the device's compass sensor to point users toward the Qibla in real time.",
-      "Multi Language Support — Full EN/ID localization using Flutter's ARB-based system, with a custom LocaleProvider for seamless language switching.",
-      "Dark Mode — A polished, theme-aware UI for comfortable use at any time of day."
+      "Location Aware Prayer Times — Accurate prayer times for where you are or for any city you choose, and they still work without internet.",
+      "Prayer Tracker — Tick off each prayer once it is done, right from the schedule or the reminder, and see your history.",
+      "Adhan & Reminders — Hear the adhan at prayer time, with an optional heads-up 10 minutes before.",
+      "Quran with Audio — Read all 114 surahs with English or Indonesian translation, listen verse by verse, and pick up where you left off.",
+      "Qibla Compass & Mosque Finder — A compass that points to the Qibla, plus a list of mosques and prayer rooms near you.",
+      "Daily Worship — Morning and evening dhikr, daily duas, the 99 names of Allah, a digital tasbih and a daily hadith.",
+      "Hijri Calendar — See Islamic holidays and sunnah fasting days, with a reminder the night before.",
+      "Zakat Calculators — Work out zakat on income, savings, gold, trade, fitrah and fidyah using today's gold and silver prices.",
+      "Home Screen Widget — See the next prayer time on your home screen without opening the app.",
+      "Multi Language & Dark Mode — Available in English and Indonesian, with a dark mode that is easy on the eyes at night."
     ],
     componentsUsed: [
       {
@@ -374,29 +405,9 @@ export const projects = [
         url: "https://pub.dev/packages/workmanager"
       },
       {
-        name: "flutter_compass",
-        type: "Device Compass Sensor (Qibla Direction)",
-        url: "https://pub.dev/packages/flutter_compass"
-      },
-      {
         name: "flutter_local_notifications",
         type: "Push Notifications",
         url: "https://pub.dev/packages/flutter_local_notifications"
-      },
-      {
-        name: "geolocator",
-        type: "GPS Location Services",
-        url: "https://pub.dev/packages/geolocator"
-      },
-      {
-        name: "geocoding",
-        type: "Reverse Geocoding",
-        url: "https://pub.dev/packages/geocoding"
-      },
-      {
-        name: "timezone",
-        type: "Timezone Calculation",
-        url: "https://pub.dev/packages/timezone"
       },
       {
         name: "sqflite",
@@ -404,24 +415,37 @@ export const projects = [
         url: "https://pub.dev/packages/sqflite"
       },
       {
+        name: "provider",
+        type: "State Management",
+        url: "https://pub.dev/packages/provider"
+      },
+      {
+        name: "just_audio",
+        type: "Quran Audio Playback",
+        url: "https://pub.dev/packages/just_audio"
+      },
+      {
+        name: "geolocator",
+        type: "GPS Location Services",
+        url: "https://pub.dev/packages/geolocator"
+      },
+      {
+        name: "flutter_compass",
+        type: "Device Compass Sensor (Qibla Direction)",
+        url: "https://pub.dev/packages/flutter_compass"
+      },
+      {
         name: "Al Adhan API",
         type: "Prayer Times Calculations",
         url: "https://aladhan.com/prayer-times-api"
       },
       {
-        name: "provider",
-        type: "State Management",
-        url: "https://pub.dev/packages/provider"
+        name: "Gold API",
+        type: "Live Gold & Silver Prices",
+        url: "https://gold-api.com/"
       }
     ],
-    tech: [
-      "Flutter",
-      "sqflite",
-      "WorkManager",
-      "Al Adhan API",
-      "home_widget",
-      "flutter_compass"
-    ],
+    tech: ["Flutter", "Dart", "SQLite", "REST API", "Android"],
     demoUrl: "/api/download/andrehaliim/deenly",
     repoUrl: "https://github.com/andrehaliim/deenly",
     privacyUrl: "/projects/deenly/privacy",
@@ -431,6 +455,8 @@ export const projects = [
   {
     id: "proj-5",
     name: "laundryan",
+    // Accent tone sampled from the app UI, used for icon tiles on the detail page
+    tone: "#2b8ac0",
     title: "Laundryan — Laundry Tracker App",
     description:
       "A personal laundry tracker that catalogs your wardrobe with photos, logs each laundry drop-off as a session, and checks every piece back in on pickup. Lost or swapped items get flagged right away, so nothing goes missing without you knowing.",
@@ -511,14 +537,7 @@ export const projects = [
         url: "https://pub.dev/packages/hugeicons"
       }
     ],
-    tech: [
-      "Flutter",
-      "Drift (SQLite)",
-      "Provider",
-      "flutter_local_notifications",
-      "image_picker",
-      "url_launcher"
-    ],
+    tech: ["Flutter", "Dart", "SQLite", "Android"],
     demoUrl: "/api/download/andrehaliim/laundryan",
     repoUrl: "https://github.com/andrehaliim/laundryan",
     privacyUrl: "/projects/laundryan/privacy",

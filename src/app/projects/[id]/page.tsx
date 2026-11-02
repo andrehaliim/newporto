@@ -1,13 +1,60 @@
 "use client";
 
-import { use, useState } from "react";
+import { use, useRef, useState, type CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { AnimatePresence, MotionConfig, motion, type Variants } from "framer-motion";
 import {
   ArrowLeft,
+  BellRing,
+  Bluetooth,
+  BookOpen,
+  Braces,
+  Calculator,
+  CalendarDays,
+  Camera,
+  Car,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  ClipboardList,
+  Clock,
+  Code,
+  Coins,
+  Compass,
+  Database,
+  FileText,
+  Flame,
+  Gavel,
+  Globe,
+  HandHeart,
+  Image as ImageIcon,
+  Languages,
+  LayoutDashboard,
+  LayoutGrid,
   Layers,
   Link as LinkIcon,
+  ListChecks,
+  Lock,
+  MapPin,
+  Moon,
+  PenLine,
+  Phone,
+  Printer,
+  RefreshCw,
+  Search,
+  SearchX,
+  Shirt,
   ShieldCheck,
+  Smartphone,
+  Sparkles,
+  Tags,
+  Ticket,
+  TriangleAlert,
+  Wallet,
+  WashingMachine,
+  X,
+  type LucideIcon,
 } from "lucide-react";
 import { projects } from "@/data/portfolio";
 import { GithubIcon } from "@/components/icons/BrandIcons";
@@ -17,11 +64,79 @@ interface PageProps {
   params: Promise<{ id: string }>;
 }
 
+// Screenshot slides in from the side it was navigated towards
+const slideVariants: Variants = {
+  enter: (direction: number) => ({ x: direction >= 0 ? "100%" : "-100%", opacity: 0.4 }),
+  center: { x: 0, opacity: 1 },
+  exit: (direction: number) => ({ x: direction >= 0 ? "-100%" : "100%", opacity: 0.4 }),
+};
+
+const SWIPE_THRESHOLD = 60;
+
+// Picks a key-feature icon from its title; first match wins, so order matters
+const FEATURE_ICONS: [RegExp, LucideIcon][] = [
+  [/prayer times/i, Clock],
+  [/tracker|checklist/i, ListChecks],
+  [/adhan|reminder|notification/i, BellRing],
+  [/quran/i, BookOpen],
+  [/qibla|compass/i, Compass],
+  [/worship/i, HandHeart],
+  [/calendar/i, CalendarDays],
+  [/zakat|calculat/i, Calculator],
+  [/widget/i, LayoutGrid],
+  [/language/i, Languages],
+  [/dark mode/i, Moon],
+  [/gold|trading/i, Coins],
+  [/payment|receivable/i, Wallet],
+  [/pdf|document|file/i, FileText],
+  [/bluetooth|print/i, Printer],
+  [/dashboard|report/i, LayoutDashboard],
+  [/offline|sync/i, RefreshCw],
+  [/flavor|build/i, Layers],
+  [/auction/i, Gavel],
+  [/vehicle/i, Car],
+  [/image|gallery/i, ImageIcon],
+  [/signature/i, PenLine],
+  [/photo|selfie/i, Camera],
+  [/search|filter/i, Search],
+  [/responsive|device/i, Smartphone],
+  [/questionnaire/i, ClipboardList],
+  [/location|check in/i, MapPin],
+  [/ticket/i, Ticket],
+  [/issue/i, TriangleAlert],
+  [/auth/i, Lock],
+  [/wardrobe/i, Shirt],
+  [/laundry/i, WashingMachine],
+  [/lost/i, SearchX],
+  [/whatsapp|call/i, Phone],
+  [/categor/i, Tags],
+];
+
+const TECH_ICONS: [RegExp, LucideIcon][] = [
+  [/flutter|android|ios/i, Smartphone],
+  [/dart/i, Braces],
+  [/sql|objectbox|database/i, Database],
+  [/firebase/i, Flame],
+  [/api/i, Globe],
+  [/bluetooth/i, Bluetooth],
+  [/geo|location/i, MapPin],
+];
+
+const techIcon = (name: string) =>
+  TECH_ICONS.find(([pattern]) => pattern.test(name))?.[1] ?? Code;
+
+const featureIcon = (title: string) =>
+  FEATURE_ICONS.find(([pattern]) => pattern.test(title))?.[1] ?? Sparkles;
+
 export default function ProjectDetailPage({ params }: PageProps) {
   const resolvedParams = use(params);
   const project = projects.find((p) => p.name === resolvedParams.id);
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [openFeature, setOpenFeature] = useState<number | null>(null);
+  const stripRef = useRef<HTMLDivElement>(null);
 
   if (!project) {
     return (
@@ -49,8 +164,17 @@ export default function ProjectDetailPage({ params }: PageProps) {
     );
   })();
 
+  const showImage = (idx: number) => {
+    const next = (idx + screenshots.length) % screenshots.length;
+    if (next === activeImageIndex) return;
+    setDirection(idx > activeImageIndex ? 1 : -1);
+    setActiveImageIndex(next);
+  };
+  const activeCaption = project.screenshotDescription?.[activeImageIndex];
+  const isStoreStyle = project.screenshotStyle === "store";
+
   return (
-    <div className="w-full">
+    <div className="w-full" style={{ "--tone": project.tone ?? "#0a2e0e" } as CSSProperties}>
       <title>{`${project.title} — Project Detail`}</title>
       <meta name="description" content={project.description} />
 
@@ -138,58 +262,324 @@ export default function ProjectDetailPage({ params }: PageProps) {
                 App Screenshots
               </h3>
 
-              <div className="flex flex-col items-center justify-center p-6 rounded-[10px] border border-border bg-surface-soft">
-                {/* Phone frame */}
-                <div className="relative mx-auto w-full max-w-[260px] aspect-[9/19.5] rounded-[38px] border-[8px] border-[#181d26] shadow-xl overflow-hidden bg-canvas ring-1 ring-border">
-                  <div className="relative h-full w-full overflow-hidden bg-surface-soft">
-                    <Image
-                      src={screenshots[activeImageIndex]}
-                      alt={`Screenshot ${project.title} - ${activeImageIndex + 1}`}
-                      fill
-                      priority
-                      sizes="(min-width: 1024px) 25vw, 75vw"
-                      className="object-cover"
-                    />
-                    <div className="absolute bottom-1 left-1/2 z-20 h-1 w-20 -translate-x-1/2 rounded-full bg-text/10" />
+              <MotionConfig reducedMotion="user">
+                {isStoreStyle ? (
+                <>
+                  {/* Store listing strip — screenshots already carry caption & device mockup */}
+                  <div className="relative">
+                    <div
+                      ref={stripRef}
+                      className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 [scrollbar-width:none]"
+                    >
+                      {screenshots.map((src, idx) => (
+                        <motion.button
+                          key={src}
+                          type="button"
+                          initial={{ opacity: 0, y: 24 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.5, delay: Math.min(idx, 4) * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                          whileTap={{ scale: 0.97 }}
+                          onClick={() => {
+                            setActiveImageIndex(idx);
+                            setLightboxOpen(true);
+                          }}
+                          aria-label={`Open screenshot ${idx + 1}: ${project.screenshotDescription?.[idx] ?? ""}`}
+                          className="relative aspect-[9/16] w-[170px] flex-shrink-0 snap-start overflow-hidden rounded-[12px] border border-border bg-surface-soft sm:w-[190px]"
+                        >
+                          <Image
+                            src={src}
+                            alt={project.screenshotDescription?.[idx] ?? `Screenshot ${idx + 1}`}
+                            fill
+                            priority={idx < 3}
+                            sizes="190px"
+                            className="object-cover"
+                          />
+                        </motion.button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-xs text-text-muted">
+                      {screenshots.length} screenshots · tap to preview
+                    </span>
+                    <div className="flex gap-2">
+                      {[-1, 1].map((dir) => (
+                        <motion.button
+                          key={dir}
+                          type="button"
+                          whileTap={{ scale: 0.9 }}
+                          onClick={() => stripRef.current?.scrollBy({ left: dir * 400, behavior: "smooth" })}
+                          aria-label={dir < 0 ? "Scroll screenshots left" : "Scroll screenshots right"}
+                          className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-canvas text-text active:bg-surface-strong"
+                        >
+                          {dir < 0 ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
+                        </motion.button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Lightbox preview */}
+                  <AnimatePresence>
+                    {lightboxOpen && (
+                      <motion.div
+                        role="dialog"
+                        aria-modal="true"
+                        aria-label="Screenshot preview"
+                        tabIndex={-1}
+                        ref={(el) => el?.focus()}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        onClick={() => setLightboxOpen(false)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Escape") setLightboxOpen(false);
+                          if (e.key === "ArrowLeft") showImage(activeImageIndex - 1);
+                          if (e.key === "ArrowRight") showImage(activeImageIndex + 1);
+                        }}
+                        className="fixed inset-0 z-[60] flex items-center justify-center gap-3 bg-[#0d1218]/85 p-4 outline-none sm:gap-6"
+                      >
+                        <motion.button
+                          type="button"
+                          whileTap={{ scale: 0.9 }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            showImage(activeImageIndex - 1);
+                          }}
+                          aria-label="Previous screenshot"
+                          className="hidden h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-canvas text-text active:bg-surface-strong sm:flex"
+                        >
+                          <ChevronLeft size={18} />
+                        </motion.button>
+
+                        <motion.div
+                          initial={{ scale: 0.92, y: 16 }}
+                          animate={{ scale: 1, y: 0 }}
+                          exit={{ scale: 0.92, y: 16 }}
+                          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                          onClick={(e) => e.stopPropagation()}
+                          className="relative aspect-[9/16] h-[min(85vh,calc((100vw-2rem)*16/9))] overflow-hidden rounded-[16px] bg-[#0d1218]"
+                        >
+                          <AnimatePresence initial={false} custom={direction}>
+                            <motion.div
+                              key={activeImageIndex}
+                              custom={direction}
+                              variants={slideVariants}
+                              initial="enter"
+                              animate="center"
+                              exit="exit"
+                              transition={{ type: "spring", stiffness: 260, damping: 32 }}
+                              drag="x"
+                              dragConstraints={{ left: 0, right: 0 }}
+                              dragElastic={0.6}
+                              onDragEnd={(_, info) => {
+                                if (info.offset.x < -SWIPE_THRESHOLD) showImage(activeImageIndex + 1);
+                                else if (info.offset.x > SWIPE_THRESHOLD) showImage(activeImageIndex - 1);
+                              }}
+                              className="absolute inset-0 cursor-grab active:cursor-grabbing"
+                            >
+                              <Image
+                                src={screenshots[activeImageIndex]}
+                                alt={activeCaption ?? `Screenshot ${activeImageIndex + 1}`}
+                                fill
+                                draggable={false}
+                                sizes="(min-width: 640px) 480px, 100vw"
+                                className="pointer-events-none object-cover"
+                              />
+                            </motion.div>
+                          </AnimatePresence>
+                        </motion.div>
+
+                        <motion.button
+                          type="button"
+                          whileTap={{ scale: 0.9 }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            showImage(activeImageIndex + 1);
+                          }}
+                          aria-label="Next screenshot"
+                          className="hidden h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-canvas text-text active:bg-surface-strong sm:flex"
+                        >
+                          <ChevronRight size={18} />
+                        </motion.button>
+
+                        <button
+                          type="button"
+                          onClick={() => setLightboxOpen(false)}
+                          aria-label="Close preview"
+                          className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-canvas text-text active:bg-surface-strong"
+                        >
+                          <X size={18} />
+                        </button>
+                        <span className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-canvas px-3 py-1 font-mono text-xs text-text">
+                          {String(activeImageIndex + 1).padStart(2, "0")} /{" "}
+                          {String(screenshots.length).padStart(2, "0")}
+                        </span>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </>
+                ) : (
+                <>
+                <div className="rounded-[12px] border border-border bg-surface-soft px-4 py-8 sm:px-8 sm:py-10">
+                  <div className="flex items-center justify-center gap-3 sm:gap-6">
+                    {screenshots.length > 1 && (
+                      <motion.button
+                        type="button"
+                        whileTap={{ scale: 0.9 }}
+                        onClick={() => showImage(activeImageIndex - 1)}
+                        aria-label="Previous screenshot"
+                        className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-border bg-canvas text-text active:bg-surface-strong"
+                      >
+                        <ChevronLeft size={18} />
+                      </motion.button>
+                    )}
+
+                    {/* Phone frame */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 24 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                      className="relative w-full max-w-[240px]"
+                    >
+                      {/* Side buttons */}
+                      <span className="absolute -left-[3px] top-[18%] h-8 w-[3px] rounded-l-sm bg-[#181d26]" />
+                      <span className="absolute -left-[3px] top-[28%] h-12 w-[3px] rounded-l-sm bg-[#181d26]" />
+                      <span className="absolute -right-[3px] top-[24%] h-16 w-[3px] rounded-r-sm bg-[#181d26]" />
+
+                      <div className="rounded-[44px] bg-[#181d26] p-[9px] shadow-[0_24px_48px_-16px_rgba(24,29,38,0.35)]">
+                        <div className="relative aspect-[9/19.5] w-full overflow-hidden rounded-[36px] bg-canvas">
+                          <AnimatePresence initial={false} custom={direction}>
+                            <motion.div
+                              key={activeImageIndex}
+                              custom={direction}
+                              variants={slideVariants}
+                              initial="enter"
+                              animate="center"
+                              exit="exit"
+                              transition={{ type: "spring", stiffness: 260, damping: 32 }}
+                              drag={screenshots.length > 1 ? "x" : false}
+                              dragConstraints={{ left: 0, right: 0 }}
+                              dragElastic={0.6}
+                              onDragEnd={(_, info) => {
+                                if (info.offset.x < -SWIPE_THRESHOLD) showImage(activeImageIndex + 1);
+                                else if (info.offset.x > SWIPE_THRESHOLD) showImage(activeImageIndex - 1);
+                              }}
+                              className="absolute inset-0 cursor-grab active:cursor-grabbing"
+                            >
+                              <Image
+                                src={screenshots[activeImageIndex]}
+                                alt={`Screenshot ${project.title} - ${activeImageIndex + 1}`}
+                                fill
+                                priority
+                                draggable={false}
+                                sizes="240px"
+                                className="pointer-events-none object-cover"
+                              />
+                            </motion.div>
+                          </AnimatePresence>
+
+                          {/* Dynamic island & home indicator */}
+                          <div className="pointer-events-none absolute left-1/2 top-2 z-10 h-[18px] w-[72px] -translate-x-1/2 rounded-full bg-[#181d26]" />
+                          <div className="pointer-events-none absolute bottom-1.5 left-1/2 z-10 h-1 w-20 -translate-x-1/2 rounded-full bg-[#181d26]/30" />
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    {screenshots.length > 1 && (
+                      <motion.button
+                        type="button"
+                        whileTap={{ scale: 0.9 }}
+                        onClick={() => showImage(activeImageIndex + 1)}
+                        aria-label="Next screenshot"
+                        className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-border bg-canvas text-text active:bg-surface-strong"
+                      >
+                        <ChevronRight size={18} />
+                      </motion.button>
+                    )}
+                  </div>
+
+                  {/* Counter & caption */}
+                  <div className="mt-8 flex flex-col items-center text-center">
+                    <span className="font-mono text-xs text-text-muted">
+                      {String(activeImageIndex + 1).padStart(2, "0")} /{" "}
+                      {String(screenshots.length).padStart(2, "0")}
+                    </span>
+                    <div className="relative mt-1 h-7 w-full overflow-hidden">
+                      <AnimatePresence mode="wait" initial={false}>
+                        <motion.span
+                          key={activeImageIndex}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
+                          className="block truncate font-sans text-[18px] font-medium leading-[1.4] text-text"
+                        >
+                          {activeCaption ?? project.title}
+                        </motion.span>
+                      </AnimatePresence>
+                    </div>
+
+                    {/* Progress segments */}
+                    {screenshots.length > 1 && (
+                      <div className="mt-4 flex w-full max-w-[240px] gap-1">
+                        {screenshots.map((_, idx) => (
+                          <span key={idx} className="relative h-1 flex-1 overflow-hidden rounded-full bg-surface-strong">
+                            {idx <= activeImageIndex && (
+                              <motion.span
+                                initial={{ scaleX: 0 }}
+                                animate={{ scaleX: 1 }}
+                                transition={{ duration: 0.3 }}
+                                className="absolute inset-0 origin-left rounded-full bg-[#181d26]"
+                              />
+                            )}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
 
-                {/* Counter */}
-                <div className="mt-4 rounded-full border border-border bg-canvas px-3 py-1 font-mono text-xs text-text-muted">
-                  {activeImageIndex + 1} / {screenshots.length}
-                </div>
-
-                {/* Description */}
-                {project.screenshotDescription?.[activeImageIndex] && (
-                  <p className="mt-2 font-mono text-xs text-center text-text-muted max-w-xs">
-                    {project.screenshotDescription[activeImageIndex]}
-                  </p>
+                {/* Thumbnails */}
+                {screenshots.length > 1 && (
+                  <div className="flex gap-2 overflow-x-auto px-1 py-1 pb-2 justify-center">
+                    {screenshots.map((src, idx) => (
+                      <motion.button
+                        key={idx}
+                        type="button"
+                        whileTap={{ scale: 0.92 }}
+                        onClick={() => showImage(idx)}
+                        aria-label={`Show screenshot ${idx + 1}`}
+                        aria-current={activeImageIndex === idx}
+                        animate={{ opacity: activeImageIndex === idx ? 1 : 0.55, y: activeImageIndex === idx ? -2 : 0 }}
+                        className="relative aspect-[9/16] w-12 flex-shrink-0 rounded-[6px]"
+                      >
+                        <span className="absolute inset-0 overflow-hidden rounded-[6px] border border-border bg-surface-soft">
+                          <Image
+                            src={src}
+                            alt=""
+                            fill
+                            sizes="48px"
+                            className="object-cover"
+                          />
+                        </span>
+                        {activeImageIndex === idx && (
+                          <motion.span
+                            layoutId="thumb-indicator"
+                            transition={{ type: "spring", stiffness: 400, damping: 34 }}
+                            className="absolute -inset-[3px] rounded-[8px] border-2 border-[#181d26]"
+                          />
+                        )}
+                      </motion.button>
+                    ))}
+                  </div>
                 )}
-              </div>
-
-              {/* Thumbnails */}
-              {screenshots.length > 1 && (
-                <div className="flex gap-2 overflow-x-auto pb-2 justify-center">
-                  {screenshots.map((src, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setActiveImageIndex(idx)}
-                      className={`relative aspect-[9/16] w-12 flex-shrink-0 overflow-hidden rounded-[6px] border transition-all ${activeImageIndex === idx
-                          ? "border-accent shadow-sm"
-                          : "border-border bg-surface-soft"
-                        }`}
-                    >
-                      <Image
-                        src={src}
-                        alt={`Thumbnail ${idx + 1}`}
-                        fill
-                        sizes="48px"
-                        className="object-cover"
-                      />
-                    </button>
-                  ))}
-                </div>
-              )}
+                </>
+                )}
+              </MotionConfig>
 
               {/* Components / packages */}
               {project.componentsUsed && project.componentsUsed.length > 0 && (
@@ -241,19 +631,20 @@ export default function ProjectDetailPage({ params }: PageProps) {
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((t, i) => {
-                    const pastelStyles = [
-                      "bg-sig-peach/20 text-sig-coral border-sig-peach/30",
-                      "bg-sig-mint/25 text-sig-forest border-sig-mint/40",
-                      "bg-sig-cream text-text border-border",
-                      "bg-sig-yellow/25 text-[#d9a441] border-sig-yellow/40",
-                    ];
+                    const TechIcon = techIcon(t);
                     return (
-                      <span
+                      <motion.span
                         key={t}
-                        className={`rounded-[6px] border px-3 py-1 font-mono text-[11px] font-medium ${pastelStyles[i % pastelStyles.length]}`}
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: i * 0.05 }}
+                        className="inline-flex items-center gap-2 rounded-[10px] border border-border bg-canvas py-1.5 pl-1.5 pr-3"
                       >
-                        {t}
-                      </span>
+                        <span className="flex h-6 w-6 items-center justify-center rounded-[6px] bg-[color-mix(in_srgb,var(--tone)_14%,white)] text-[var(--tone)]">
+                          <TechIcon size={13} strokeWidth={2.25} />
+                        </span>
+                        <span className="font-sans text-[13px] font-medium text-text">{t}</span>
+                      </motion.span>
                     );
                   })}
                 </div>
@@ -264,15 +655,25 @@ export default function ProjectDetailPage({ params }: PageProps) {
                 <h3 className="font-mono text-xs uppercase tracking-wider text-text-muted">
                   Overview
                 </h3>
-                <div className="space-y-3">
-                  {Array.isArray(project.overview) ? (
-                    project.overview.map((paragraph, index) => (
-                      <p key={index} className="text-[14px] leading-relaxed text-text-muted break-words">
-                        {paragraph}
-                      </p>
-                    ))
-                  ) : (
-                    <p className="text-[14px] leading-relaxed text-text-muted break-words">{project.overview}</p>
+                {/* div instead of p: the global p rule would override size and line-height */}
+                <div className="space-y-4">
+                  {(Array.isArray(project.overview) ? project.overview : [project.overview]).map(
+                    (paragraph, index) =>
+                      index === 0 ? (
+                        <div
+                          key={index}
+                          className="font-sans text-[16px] leading-[1.6] text-text break-words"
+                        >
+                          {paragraph}
+                        </div>
+                      ) : (
+                        <div
+                          key={index}
+                          className="font-sans text-[14px] leading-[1.7] text-text-body break-words"
+                        >
+                          {paragraph}
+                        </div>
+                      )
                   )}
                 </div>
               </div>
@@ -283,18 +684,54 @@ export default function ProjectDetailPage({ params }: PageProps) {
                   <h3 className="font-mono text-xs uppercase tracking-wider text-text-muted">
                     Key Features
                   </h3>
-                  <ul className="space-y-2 list-disc pl-5">
+                  <ul className="divide-y divide-border overflow-hidden rounded-[10px] border border-border bg-canvas">
                     {project.descriptionPoints.map((point, index) => {
-                      const match = point.match(/^([^—\-:]+[\—\-:])(\s*)(.*)$/);
+                      // "Title — detail" → short title row, detail revealed on tap
+                      const match = point.match(/^(.+?)\s+[—–-]\s+(.+)$/);
+                      const title = match ? match[1] : point;
+                      const detail = match?.[2];
+                      const isOpen = openFeature === index;
+                      const FeatureIcon = featureIcon(title);
                       return (
-                        <li key={index} className="text-[14px] leading-relaxed text-text-muted marker:text-sig-coral break-words">
-                          {match ? (
-                            <>
-                              <strong className="font-semibold text-text">{match[1]}</strong>{match[2]}{match[3]}
-                            </>
-                          ) : (
-                            point
-                          )}
+                        <li key={index}>
+                          <button
+                            type="button"
+                            onClick={() => setOpenFeature(isOpen ? null : index)}
+                            aria-expanded={isOpen}
+                            disabled={!detail}
+                            className="flex w-full items-center gap-3 px-4 py-3 text-left active:bg-surface-soft disabled:cursor-default"
+                          >
+                            <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--tone)_14%,white)] text-[var(--tone)]">
+                              <FeatureIcon size={14} strokeWidth={2.25} />
+                            </span>
+                            <span className="flex-1 font-sans text-[14px] font-medium leading-[1.4] text-text break-words">
+                              {title}
+                            </span>
+                            {detail && (
+                              <motion.span
+                                animate={{ rotate: isOpen ? 180 : 0 }}
+                                transition={{ duration: 0.2 }}
+                                className="flex-shrink-0 text-text-muted"
+                              >
+                                <ChevronDown size={16} />
+                              </motion.span>
+                            )}
+                          </button>
+                          <AnimatePresence initial={false}>
+                            {isOpen && detail && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                                className="overflow-hidden"
+                              >
+                                <div className="pb-4 pl-[52px] pr-4 font-sans text-[13px] leading-[1.6] text-text-muted break-words">
+                                  {detail}
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
                         </li>
                       );
                     })}
