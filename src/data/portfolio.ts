@@ -344,7 +344,7 @@ export const projects = [
     tone: "#0f5c4a",
     title: "Deenly — Islamic Companion App",
     description:
-      "An Islamic companion app that brings location-based prayer times with a prayer tracker, the Quran with audio recitation, Qibla direction, dhikr and duas, a Hijri calendar and zakat calculators together in one app, with a home screen widget, reliable reminders and EN/ID localization.",
+      "An all-in-one Islamic app for prayer times and tracking, the Quran with audio, Qibla, dhikr, Hijri calendar and zakat.",
     overview: [
       "Deenly started from a simple frustration: switching between separate apps every day for prayer times, the Quran and dhikr. So it was built as one calm app that brings daily worship together in one place.",
       "The real challenge wasn't the screens, it was staying reliable while the app is closed. Prayer times are cached on the device so they work offline, background jobs keep the schedule and the home screen widget up to date without opening the app, and reminders still arrive on time. Values like zakat thresholds come from a remote config, so they can change without shipping an update.",
@@ -459,7 +459,7 @@ export const projects = [
     tone: "#2b8ac0",
     title: "Laundryan — Laundry Tracker App",
     description:
-      "A personal laundry tracker that catalogs your wardrobe with photos, logs each laundry drop-off as a session, and checks every piece back in on pickup. Lost or swapped items get flagged right away, so nothing goes missing without you knowing.",
+      "A personal laundry tracker that catalogs your clothes and checks every item in and out, so nothing goes missing.",
     overview: [
       "Laundryan started from a simple frustration: sending clothes to the laundry and only realizing days later that a shirt or a pair of socks never came back. So it was built as a simple app that keeps track of every piece from drop-off to pickup.",
       "The real challenge wasn't the screens, it was keeping the numbers right. Each drop-off is saved as a session linked to the wardrobe in a local SQLite database, so the app always knows what is at home, in the wash or missing, and it all works offline. On pickup, a checklist marks each piece as returned, lost or swapped, and if something is missing the app writes the WhatsApp message to the laundry for you. Reminders follow the device's timezone, so they arrive before the laundry is ready.",
