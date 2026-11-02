@@ -351,7 +351,7 @@ export const projects = [
       "Designed, built and maintained solo with Flutter, Deenly is open-source under the MIT license and released as an Android app through GitHub Releases."
     ],
     image: "/projects/deenly/logo.png",
-    // Store-style preview screenshots (temporary, deenly only)
+    // Store-style preview screenshots
     screenshotStyle: "store",
     screenshots: [
       "/projects/deenly/store/01_home.png",
@@ -461,18 +461,35 @@ export const projects = [
     description:
       "A personal laundry tracker that catalogs your wardrobe with photos, logs each laundry drop-off as a session, and checks every piece back in on pickup. Lost or swapped items get flagged right away, so nothing goes missing without you knowing.",
     overview: [
-      "Laundryan is a personal project that started with a common frustration: sending clothes to a laundry service and only realizing days later that a shirt or a pair of socks never came back. Built independently with Flutter, it turns your wardrobe into a photo catalog and records each laundry trip as a session: which items went out, where, and when they should be ready. On pickup, a checklist walks you through verifying every piece, marking it as returned, lost or swapped. If anything is missing, the app writes a WhatsApp message to the laundry for you, listing exactly what didn’t come back. Everything is stored offline in a relational SQLite database, and a timezone-aware reminder lets you know before your laundry is ready."
+      "Laundryan started from a simple frustration: sending clothes to the laundry and only realizing days later that a shirt or a pair of socks never came back. So it was built as a simple app that keeps track of every piece from drop-off to pickup.",
+      "The real challenge wasn't the screens, it was keeping the numbers right. Each drop-off is saved as a session linked to the wardrobe in a local SQLite database, so the app always knows what is at home, in the wash or missing, and it all works offline. On pickup, a checklist marks each piece as returned, lost or swapped, and if something is missing the app writes the WhatsApp message to the laundry for you. Reminders follow the device's timezone, so they arrive before the laundry is ready.",
+      "Designed, built and maintained solo with Flutter, Laundryan is open-source under the MIT license and released as an Android app through GitHub Releases."
     ],
-    image: "/projects/laundryan/cover.png",
-    screenshots: "/projects/laundryan",
-    screenshotCount: 6,
+    image: "/projects/laundryan/logo.png",
+    screenshotStyle: "store",
+    screenshots: [
+      "/projects/laundryan/store/01_sessions.png",
+      "/projects/laundryan/store/02_checklist.png",
+      "/projects/laundryan/store/03_summary_whatsapp.png",
+      "/projects/laundryan/store/04_session_detail.png",
+      "/projects/laundryan/store/05_report_missing.png",
+      "/projects/laundryan/store/06_wardrobe.png",
+      "/projects/laundryan/store/07_add_item.png",
+      "/projects/laundryan/store/08_add_session.png",
+      "/projects/laundryan/store/09_categories.png",
+      "/projects/laundryan/store/10_sessions_dark.png"
+    ],
     screenshotDescription: [
-      "Active Sessions",
-      "Session Detail",
-      "Pickup Verification Checklist",
-      "Session Archive & Lost Item Tracking",
-      "Wardrobe Catalog",
-      "Dark Mode"
+      "Never lose laundry again",
+      "Check items at pickup",
+      "Missing items? One tap",
+      "Know when it's ready",
+      "Flag lost or swapped",
+      "Your closet, cataloged",
+      "Add clothes in seconds",
+      "Never miss pickup time",
+      "Categories your way",
+      "Easy on the eyes at night"
     ],
     descriptionPoints: [
       "Wardrobe Catalog — Add clothes with a photo (camera or gallery), category, quantity and notes, then search and filter them by name or category.",
