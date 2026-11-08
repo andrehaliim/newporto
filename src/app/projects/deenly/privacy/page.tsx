@@ -5,7 +5,7 @@ import { ArrowLeft } from "lucide-react";
 const APP_NAME = "Deenly";
 const DEVELOPER = "Andre Haliim";
 const CONTACT_EMAIL = "andrehaliimkurniawan@gmail.com";
-const EFFECTIVE_DATE = { en: "October 13, 2026", id: "13 Oktober 2026" };
+const EFFECTIVE_DATE = { en: "November 8, 2026", id: "8 November 2026" };
 
 export const metadata: Metadata = {
   title: `${APP_NAME} — Privacy Policy`,
@@ -65,12 +65,14 @@ const policies: Policy[] = [
         ],
         points: [
           "Aladhan API (aladhan.com): your coordinates and time zone, to get the prayer schedule.",
-          "OpenStreetMap Nominatim: an area of about 2 km around your location, to search for nearby mosques.",
+          "Photon by komoot (photon.komoot.io), a search service built on OpenStreetMap data: your coordinates, an area of about 2 km around them and search words such as \"masjid\" or \"mosque\", to find nearby mosques.",
           "Your device's geocoding service (on Android, usually provided by Google): your coordinates or the city you type, to look up a place name.",
           "jsDelivr CDN and EveryAyah.com: no personal data, only requests to download Quran text and recitation audio.",
+          "gold-api.com and Frankfurter (frankfurter.dev): no personal data, only requests for the current gold and silver prices and the US dollar to rupiah exchange rate, used by the zakat calculator.",
+          "The developer's website (andrehaliim.vercel.app, hosted on Vercel): no personal data, only a request to download a public configuration file with zakat values, Islamic calendar dates and the minimum supported app version. This also happens during the daily background refresh.",
         ],
         notes: [
-          "Like any internet request, these services can see your IP address, and each of them handles data under its own privacy policy. When you open directions to a mosque, the app hands that mosque's location to Google Maps, which then works under Google's privacy policy.",
+          "Like any internet request, these services can see your IP address, and each of them handles data under its own privacy policy. When you open directions to a mosque, the app hands that mosque's location to Google Maps. When you tap \"See more on Google Maps\", the app opens a Google Maps search for mosques, which Google Maps runs around your location using its own location access. In both cases Google Maps works under Google's privacy policy.",
         ],
       },
       {
@@ -84,6 +86,8 @@ const policies: Policy[] = [
           "Downloaded Quran text and your last-read position.",
           "Your daily prayer checklist progress.",
           "App preferences: language, theme and notification settings.",
+          "Cached gold and silver prices for the zakat calculator.",
+          "The app configuration downloaded from the developer's website.",
         ],
       },
       {
@@ -95,7 +99,7 @@ const policies: Policy[] = [
       {
         title: "5. Notifications, alarms and the home screen widget",
         paragraphs: [
-          "If you allow notifications, the app schedules local adhan and reminder notifications on your device using exact alarms, and re-schedules them after your device restarts. A background task periodically refreshes the prayer schedule using your saved location. The home screen widget shows prayer times and your city name. All of this runs on your device. You can turn notifications off at any time in the app or in your system settings.",
+          "If you allow notifications, the app schedules local adhan and reminder notifications on your device and re-schedules them after your device restarts. If you also allow the \"Alarms & reminders\" access, they arrive exactly on time; without it, they may arrive a few minutes late. If notifications are blocked in your system settings, the app keeps your reminder choices on the device and schedules them again once you allow notifications. A background task refreshes the prayer schedule once a day using your saved location. The home screen widget shows prayer times and your city name. All of this runs on your device. You can turn notifications off at any time in the app or in your system settings.",
         ],
       },
       {
@@ -165,12 +169,14 @@ const policies: Policy[] = [
         ],
         points: [
           "Aladhan API (aladhan.com): koordinat dan zona waktumu, untuk mengambil jadwal sholat.",
-          "OpenStreetMap Nominatim: area sekitar 2 km di sekitar lokasimu, untuk mencari masjid terdekat.",
+          "Photon dari komoot (photon.komoot.io), layanan pencarian berbasis data OpenStreetMap: koordinatmu, area sekitar 2 km di sekitarnya, dan kata pencarian seperti \"masjid\" atau \"mosque\", untuk mencari masjid terdekat.",
           "Layanan geocoding bawaan perangkat (di Android biasanya disediakan Google): koordinat atau nama kota yang kamu ketik, untuk mencari nama tempat.",
           "jsDelivr CDN dan EveryAyah.com: tanpa data pribadi, hanya permintaan untuk mengunduh teks Al-Qur'an dan audio murattal.",
+          "gold-api.com dan Frankfurter (frankfurter.dev): tanpa data pribadi, hanya permintaan harga emas dan perak terkini serta kurs dolar AS ke rupiah, untuk kalkulator zakat.",
+          "Website developer (andrehaliim.vercel.app, di-hosting oleh Vercel): tanpa data pribadi, hanya permintaan untuk mengunduh file konfigurasi publik berisi nilai zakat, tanggal kalender Hijriah, dan versi minimum aplikasi yang didukung. Ini juga terjadi saat pembaruan harian di latar belakang.",
         ],
         notes: [
-          "Seperti permintaan internet pada umumnya, layanan tersebut dapat melihat alamat IP kamu, dan masing-masing menangani data sesuai kebijakan privasinya sendiri. Saat kamu membuka petunjuk arah ke masjid, aplikasi meneruskan lokasi masjid tersebut ke Google Maps, yang kemudian berjalan sesuai kebijakan privasi Google.",
+          "Seperti permintaan internet pada umumnya, layanan tersebut dapat melihat alamat IP kamu, dan masing-masing menangani data sesuai kebijakan privasinya sendiri. Saat kamu membuka petunjuk arah ke masjid, aplikasi meneruskan lokasi masjid tersebut ke Google Maps. Saat kamu mengetuk \"Lihat lebih banyak di Google Maps\", aplikasi membuka pencarian masjid di Google Maps, yang dijalankan Google Maps di sekitar lokasimu dengan akses lokasinya sendiri. Dalam kedua hal ini Google Maps berjalan sesuai kebijakan privasi Google.",
         ],
       },
       {
@@ -184,6 +190,8 @@ const policies: Policy[] = [
           "Teks Al-Qur'an yang diunduh dan posisi terakhir membaca.",
           "Progres checklist sholat harian.",
           "Preferensi aplikasi: bahasa, tema, dan pengaturan notifikasi.",
+          "Harga emas dan perak tersimpan untuk kalkulator zakat.",
+          "Konfigurasi aplikasi yang diunduh dari website developer.",
         ],
       },
       {
@@ -195,7 +203,7 @@ const policies: Policy[] = [
       {
         title: "5. Notifikasi, alarm, dan widget layar utama",
         paragraphs: [
-          "Jika kamu mengizinkan notifikasi, aplikasi menjadwalkan notifikasi adzan dan pengingat secara lokal di perangkat menggunakan alarm tepat waktu, dan menjadwalkannya ulang setelah perangkat dinyalakan ulang. Sebuah tugas latar belakang memperbarui jadwal sholat secara berkala menggunakan lokasi tersimpan. Widget layar utama menampilkan jadwal sholat dan nama kotamu. Semua ini berjalan di perangkatmu. Kamu bisa mematikan notifikasi kapan saja dari aplikasi atau pengaturan sistem.",
+          "Jika kamu mengizinkan notifikasi, aplikasi menjadwalkan notifikasi adzan dan pengingat secara lokal di perangkat, dan menjadwalkannya ulang setelah perangkat dinyalakan ulang. Jika kamu juga mengizinkan akses \"Alarm & pengingat\", notifikasi datang tepat waktu; tanpa akses itu, notifikasi bisa telat beberapa menit. Jika notifikasi diblokir di pengaturan sistem, aplikasi tetap menyimpan pilihan pengingatmu di perangkat dan menjadwalkannya lagi setelah notifikasi diizinkan. Sebuah tugas latar belakang memperbarui jadwal sholat sekali sehari menggunakan lokasi tersimpan. Widget layar utama menampilkan jadwal sholat dan nama kotamu. Semua ini berjalan di perangkatmu. Kamu bisa mematikan notifikasi kapan saja dari aplikasi atau pengaturan sistem.",
         ],
       },
       {
