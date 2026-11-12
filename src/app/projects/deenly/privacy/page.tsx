@@ -3,9 +3,9 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 const APP_NAME = "Deenly";
-const DEVELOPER = "Andre Haliim";
-const CONTACT_EMAIL = "andrehaliimkurniawan@gmail.com";
-const EFFECTIVE_DATE = { en: "November 8, 2026", id: "8 November 2026" };
+const DEVELOPER = "PT Andre Haliim Studio";
+const CONTACT_EMAIL = "contact@andrehaliim.com";
+const EFFECTIVE_DATE = { en: "November 12, 2026", id: "12 November 2026" };
 
 export const metadata: Metadata = {
   title: `${APP_NAME} — Privacy Policy`,
@@ -38,7 +38,7 @@ const policies: Policy[] = [
     label: "English",
     heading: "Privacy Policy",
     effective: `Effective date: ${EFFECTIVE_DATE.en}`,
-    intro: `This policy explains how the ${APP_NAME} mobile app ("the app"), developed by ${DEVELOPER} as an individual developer, handles your information. By using the app, you agree to the practices described here.`,
+    intro: `This policy explains how the ${APP_NAME} mobile app ("the app"), developed by ${DEVELOPER}, a company registered in Indonesia, handles your information. By using the app, you agree to the practices described here.`,
     summaryTitle: "In short",
     summary:
       "Deenly uses your location only to show prayer times, the qibla direction and nearby mosques. Your settings and progress stay on your device. The app has no accounts, no analytics, no ads and no server of its own, and your data is never sold.",
@@ -142,7 +142,7 @@ const policies: Policy[] = [
     label: "Bahasa Indonesia",
     heading: "Kebijakan Privasi",
     effective: `Tanggal berlaku: ${EFFECTIVE_DATE.id}`,
-    intro: `Kebijakan ini menjelaskan bagaimana aplikasi ${APP_NAME} ("aplikasi"), yang dikembangkan oleh ${DEVELOPER} sebagai developer perorangan, menangani informasi kamu. Dengan menggunakan aplikasi ini, kamu menyetujui praktik yang dijelaskan di sini.`,
+    intro: `Kebijakan ini menjelaskan bagaimana aplikasi ${APP_NAME} ("aplikasi"), yang dikembangkan oleh ${DEVELOPER}, perseroan yang terdaftar di Indonesia, menangani informasi kamu. Dengan menggunakan aplikasi ini, kamu menyetujui praktik yang dijelaskan di sini.`,
     summaryTitle: "Ringkasnya",
     summary:
       "Deenly memakai lokasimu hanya untuk menampilkan jadwal sholat, arah kiblat, dan masjid terdekat. Pengaturan dan progresmu tetap ada di perangkatmu. Aplikasi ini tidak punya akun, analytics, iklan, maupun server sendiri, dan datamu tidak pernah dijual.",

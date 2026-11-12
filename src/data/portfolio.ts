@@ -35,6 +35,12 @@ export const profile = {
   },
 };
 
+export const company = {
+  legalName: "PT Andre Haliim Studio",
+  city: "Kota Tasikmalaya, Indonesia",
+  email: "contact@andrehaliim.com",
+};
+
 export const skills = {
   languages: [
     "Dart",
